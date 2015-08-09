@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[A Church MacAdmin's Blog]]></title>
-  <link href="http://mholtrlc.github.io//atom.xml" rel="self"/>
-  <link href="http://mholtrlc.github.io//"/>
-  <updated>2015-08-09T01:16:13-07:00</updated>
-  <id>http://mholtrlc.github.io//</id>
+  <link href="http://mholtrlc.github.io/atom.xml" rel="self"/>
+  <link href="http://mholtrlc.github.io/"/>
+  <updated>2015-08-09T01:28:00-07:00</updated>
+  <id>http://mholtrlc.github.io/</id>
   <author>
     <name><![CDATA[mholtrlc]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[My First Post!]]></title>
-    <link href="http://mholtrlc.github.io//blog/2015/08/08/my-first-post/"/>
+    <link href="http://mholtrlc.github.io/blog/2015/08/08/my-first-post/"/>
     <updated>2015-08-08T23:59:06-07:00</updated>
-    <id>http://mholtrlc.github.io//blog/2015/08/08/my-first-post</id>
+    <id>http://mholtrlc.github.io/blog/2015/08/08/my-first-post</id>
     <content type="html"><![CDATA[
 ]]></content>
   </entry>
