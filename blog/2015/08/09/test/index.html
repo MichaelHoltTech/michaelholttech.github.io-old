@@ -31,6 +31,7 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="/javascripts/footnote.js"></script>
+<script src="/javascripts/twitterFetcher_min.js"></script>
 <!-- ... -->
 
 
@@ -190,7 +191,7 @@
   
   <aside class="sidebar col-md-3">
     
-      Included file 'custom/asides/aboutmetwitter.html' not found in _includes directory<section class="panel panel-default clearfix">
+      <section class="panel panel-default clearfix">
   <div class="panel-heading">
       <h3 class="panel-title">GitHub Repos</h3>
   </div>
@@ -230,6 +231,46 @@
     
   </div>
 </section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Twitter</h3>
+  </div>
+  <div id="tw-widget1"></div>
+</section>
+
+<script type="text/javascript">
+
+  var config5 = {
+  "id": '630536674305445888',
+  "domId": '',
+  "maxTweets": 3,
+  "enableLinks": true,
+  "showUser": true,
+  "showTime": true,
+  "dateFunction": '',
+  "showRetweet": false,
+  "customCallback": handleTweets,
+  "showInteraction": true,
+  "showImages": false
+};
+
+function handleTweets(tweets){
+    var x = tweets.length;
+    var n = 0;
+    var element = document.getElementById('tw-widget1');
+    var html = '<ul class="list-group">';
+    while(n < x) {
+      var tweet = tweets[n].replace(/<img[^>"']*((("[^"]*")|('[^']*'))[^"'>]*)*>/g,"");
+      html += '<li class="list-group-item">' + tweet + '</li>';
+      n++;
+    }
+    html += '</ul>';
+    element.innerHTML = html;
+}
+
+twitterFetcher.fetch(config5);
+  twitterFetcher.fetch(config1);
+</script>
 
     
   </aside>
