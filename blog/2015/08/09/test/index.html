@@ -29,6 +29,7 @@
 
 <link href="http://bootswatch.com/yeti/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/stylesheets/twitter.css" rel="stylesheet" type="text/css">
+<link href="/stylesheets/aboutme.css" rel="stylesheet" type="text/css">
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="/javascripts/footnote.js"></script>
@@ -194,6 +195,18 @@
     
       <section class="panel panel-default clearfix">
   <div class="panel-heading">
+      <h3 class="panel-title">About Me</h3>
+  </div>
+  <div class="list-group text-center">
+    <div class="circular"></div>
+    <p class="list-group-item-text about-me">I am an IT Administrator, Network Admin, Server Admin, Programmer, and Jack-Of-All-Trades serving the lord and the church with my talents.</p>
+    <p class="list-group-item-text about-me"><small>The opinions and posts on this site are my own and are not necessarily shared by my employer.</small></p>
+  </div>
+
+
+</section>
+<section class="panel panel-default clearfix">
+  <div class="panel-heading">
       <h3 class="panel-title">GitHub Repos</h3>
   </div>
   <div class="list-group" id="gh_repos">
@@ -217,7 +230,7 @@
         github.showRepos({
             user: 'mholtrlc',
             count: 4,
-            skip_forks: true,
+            skip_forks: false,
             target: '#gh_repos'
         });
     });

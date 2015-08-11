@@ -1,0 +1,13 @@
+p.list-group-item-text.about-me {
+    padding: 15px;
+}
+.circular {
+	width: 100px;
+	height: 100px;
+	border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+	background: url(/images/holt_m.jpg) no-repeat;
+	margin: auto;
+	margin-top: 5px;
+}
