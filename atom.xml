@@ -4,11 +4,11 @@
   <title><![CDATA[A Church MacAdmin's Blog]]></title>
   <link href="http://mholtrlc.github.io/atom.xml" rel="self"/>
   <link href="http://mholtrlc.github.io/"/>
-  <updated>2015-08-10T20:11:12-07:00</updated>
+  <updated>2015-08-10T20:26:08-07:00</updated>
   <id>http://mholtrlc.github.io/</id>
   <author>
     <name><![CDATA[mholtrlc]]></name>
-    
+    <email><![CDATA[info@mholt.tech]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
