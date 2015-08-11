@@ -2,12 +2,12 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Misc | A Church MacAdmin's Blog]]></title>
-  <link href="http://mholtrlc.github.io/blog/categories/misc/atom.xml" rel="self"/>
-  <link href="http://mholtrlc.github.io/"/>
-  <updated>2015-08-10T22:04:22-07:00</updated>
-  <id>http://mholtrlc.github.io/</id>
+  <link href="http://www.mholt.tech/blog/categories/misc/atom.xml" rel="self"/>
+  <link href="http://www.mholt.tech/"/>
+  <updated>2015-08-10T22:37:52-07:00</updated>
+  <id>http://www.mholt.tech/</id>
   <author>
-    <name><![CDATA[mholtrlc]]></name>
+    <name><![CDATA[Michael Holt]]></name>
     <email><![CDATA[info@mholt.tech]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Welcome to My Blog!]]></title>
-    <link href="http://mholtrlc.github.io/blog/2015/08/10/welcome-to-my-blog/"/>
+    <link href="http://www.mholt.tech/blog/2015/08/10/welcome-to-my-blog/"/>
     <updated>2015-08-10T21:02:17-07:00</updated>
-    <id>http://mholtrlc.github.io/blog/2015/08/10/welcome-to-my-blog</id>
+    <id>http://www.mholt.tech/blog/2015/08/10/welcome-to-my-blog</id>
     <content type="html"><![CDATA[<p>Hey Guys! Thanks for checking out my blog.</p>
 
 <p>I don’t have much here yet but I soon hope to start posting some of my setup and code soon to use Munki, PuppetServer, Simain, Sal, MunkiReport, Crypt, MacNamer, and Imagr to set up a full fledged automated mac management configuration and reporting solution.</p>
