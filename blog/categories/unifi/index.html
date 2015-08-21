@@ -2,10 +2,10 @@
 <html class="no-js" lang="en">
 <head>
   <meta charset="utf-8">
-  <title>A Church MacAdmin's Blog</title>
+  <title>Category: Unifi - A Church MacAdmin's Blog</title>
   <meta name="author" content="Michael Holt">
 
-  
+  <meta name="description" content="Category: unifi">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -14,16 +14,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.mholt.tech/">
+  <link rel="canonical" href="http://www.mholt.tech/blog/categories/unifi/">
   <link href="/favicon.png" type="image/png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="A Church MacAdmin's Blog" type="application/atom+xml">
 
   <!-- http://opengraphprotocol.org/ -->
   <meta name="twitter:card" content="summary_large_image">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="http://www.mholt.tech/">
-  <meta property="og:title" content="A Church MacAdmin's Blog">
-  
+  <meta property="og:url" content="http://www.mholt.tech/blog/categories/unifi/">
+  <meta property="og:title" content="Category: Unifi - A Church MacAdmin's Blog">
+  <meta property="og:description" content="Category: unifi">
 
   <!-- ... -->
 
@@ -61,10 +61,10 @@
 
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li >
                     <a rel="index" href="/">Blog</a>
                 </li>
-                <li >
+                <li class="active">
                     <a href="/blog/archives">Archives</a>
                 </li>
             </ul>
@@ -95,19 +95,34 @@
         <div id="content">
           <div class="row">
   <div class="page-content col-md-9">
-    <div class="blog-index" itemscope itemtype="http://schema.org/Blog">
-    <meta itemprop="name" content="A Church MacAdmin's Blog" />
-    
-    <meta itemprop="url" content="http://www.mholt.tech" />
+    <article role="article">
       
-      
-      
-        <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+        <header class="page-header">
           
-  <header class="page-header">
-    
-      <p class="meta text-muted text-uppercase">
-        
+          
+            <h1 class="entry-title">
+              Category: Unifi
+              
+            </h1>
+          
+        </header>
+      
+      <div class="entry-content">
+        <div id="blog-archives" class="category" itemscope itemtype="http://schema.org/Blog">
+<meta itemprop="name" content="A Church MacAdmin's Blog" />
+
+<meta itemprop="url" content="http://www.mholt.tech" />
+
+
+
+  
+  <h2 class="year">2015</h2>
+
+<article class="page-header" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+  
+<h2 class="post-title" itemprop="name headline"><a href="/blog/2015/08/21/raspberry-pi-camera-matrix/" itemprop="url">Raspberry Pi Camera Matrix</a></h2>
+<p class="meta text-muted">
+  
 
 
 
@@ -121,181 +136,26 @@
 
 
 <span class="glyphicon glyphicon-calendar"></span> <time datetime="2015-08-21T14:46:39-07:00"  data-updated="true" itemprop="datePublished dateCreated">Fri 21 Aug 2015,  2:46 PM</time>
-        
-      </p>
-    
-    
-      <h2 class="entry-title" itemprop="name headline"><a href="/blog/2015/08/21/raspberry-pi-camera-matrix/" itemprop="url">Raspberry Pi Camera Matrix</a></h2>
-    
-  </header>
+  
+
+<span class="glyphicon glyphicon-tags"></span>&nbsp;
+<span class="categories">
+  
+    <a class='category label label-primary' href='/blog/categories/ubiquiti/'>ubiquiti</a> <a class='category label label-primary' href='/blog/categories/ufv/'>ufv,</a> <a class='category label label-primary' href='/blog/categories/unifi/'>unifi</a> <a class='category label label-primary' href='/blog/categories/video/'>video,</a>
+  
+</span>
 
 
-  <div class="entry-content clearfix" itemprop="articleBody description"><p>Over the last few months we’ve been upgrading our Security Cameras, replacing a 10 year old vitek system with the Ubiquiti Unifi Video system.  We just finished installing the last of these Cameras and that included the need to find a new solution for our Children’s Cameras to be displayed onto two TV’s.  I found a Forum Post on the Ubiquiti Community that documented one person’s script to display a <a href="http://community.ubnt.com/t5/UniFi-Video/Tutorial-Raspberry-Pi-4-Cam-Matrix-Viewer-Appliance/m-p/1253309#U1253309">2x2 Camera Matrix on a Raspberry Pi</a></p>
+</p>
 
-<p>So I went ahead and order 2x Raspberry Pi’s to power both of these displays and thought “Perfect, someone else has done the leg work all I have to do is plug in the RTSP URL’s and presto”.  Unfortunatly, I ran into some issues with screen causing the video to jump a few seconds instead of playing smoothly.  I also couldn’t get the code working as an init.d so I took a different approach using rc.local.</p>
+</article>
 
-<p>For those that are interested in how to make this happen here’s the instructions and code:</p>
-
-<p><strong>What you’ll need:</strong></p>
-
-<ul>
-  <li>Raspberry Pi2 (I got the Canakit Raspberry Pi 2 - Complete Starter Kit off of Amazon, comes with everything you need for this project)</li>
-  <li>Unifi NVR Software running the most recent stable release</li>
-  <li>HDTV or Computer Monitor capable of 1080p</li>
-  <li>MicroSD to SD Card Adapter (Optional, only needed if you have to re-install raspbian)</li>
-  <li>Keyboard for initial setup</li>
-</ul>
-
-<h3 id="instructions">Instructions</h3>
-<ol>
-  <li>
-    <p><strong>Put together and connect you PI2</strong></p>
-
-    <p>Refer to the quick-start guide that is in the Box in order to get started with your Raspberry Pi and install Raspbian using the pre-loaded NOOBS installer on the SD Card</p>
-  </li>
-  <li>
-    <p><strong>Configure Raspbian</strong></p>
-
-    <p>Once you arrive at the Raspi-Config screen you should change the default password (Option 2) and set a hostname (Option 8 - A2).</p>
-
-    <p>After this is done click finish and you will be dropped to the command line. Overclocking is also possible, but not required or recommended for what we are doing.</p>
-
-    <p>For more information on raspi-config, see <a href="https://www.raspberrypi.org/documentation/configuration/raspi-config.md">https://www.raspberrypi.org/documentation/configuration/raspi-config.md</a></p>
-  </li>
-  <li>
-    <p><strong>Get the code</strong></p>
-
-    <p>You can get the code from GitHub by entering:</p>
-
-    <p><code>git clone https://gist.github.com/dde9de96b6a4d72b7f58.git raspicams</code></p>
-  </li>
-  <li>
-    <p><strong>Edit the files for your configuration</strong></p>
-
-    <ul>
-      <li>
-        <p>cd into raspicams by entering:</p>
-
-        <p><code>cd ~/raspicams</code></p>
-      </li>
-      <li>
-        <p>edit cams.sh by typing:
-   nano cams.sh</p>
-      </li>
-      <li>
-        <p>replace <rtsp_url_using_ip> with the RTSP url's for your cameras (I recommend using the Low Quality to save bandwidth and using an IP Address instead of FQDN to ensure no issues arrise.)  This url can be found in the NVR under RTSP Service when editing a camera</rtsp_url_using_ip></p>
-      </li>
-      <li>
-        <p>exit nano by hitting ctrl + x then entering y to save and enter to keep the filename</p>
-      </li>
-      <li>
-        <p>edit network-interfaces and set static IP address configuration for eth0 (Optional but Highly Recommended)</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>Copy the files into place</strong></p>
-
-    <ul>
-      <li>
-        <p>While still inside of ~/raspicams run this in order to copy all of these files into place:</p>
-
-        <p><code>sudo chown root:root boot-config.txt network-interfaces rc.local cmdline.txt &amp; sudo chmod +x * &amp; sudo cp boot-config.txt /boot/config.txt &amp; sudo cp cmdline.txt /boot/cmdline.txt &amp; sudo cp rc.local /etc/rc.local &amp; sudo cp cams.sh ~/cams.sh</code></p>
-      </li>
-      <li>
-        <p>If you have also configured a static IP in network-interfaces run this command to copy that file into place:</p>
-
-        <p><code>sudo cp network-interfaces /etc/network/interfaces</code></p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>Reboot the Pi</strong></p>
-
-    <p>At this point all of your configuration is done.  All that’s left to do is reboot the Pi and let the cameras load up.  Enter this command to tell the Pi to reboot:</p>
-
-    <p><code>sudo reboot</code></p>
-  </li>
-</ol>
-
-<h3 id="troubleshooting">Troubleshooting</h3>
-
-<ul>
-  <li>
-    <p><strong>Display Issues:</strong></p>
-
-    <p>If you’re having strange display issues, such as banding, flickering, or the display just shuts off, it’s somewhat expected for the Raspberry Pi.  To troubleshoot, you’re going to have to make some changes to the /boot/config.txt file in order to force certain modes and resolutions.   The included config.txt works for my setup but your milage may vary depending on your TV/Monitor.</p>
-  </li>
-  <li>
-    <p><strong>Starting with a Fresh Raspbian Install:</strong></p>
-
-    <p>This is where you are going to need that option MicroSD to SD Card adapter.  I’m not going to cover how to do that because the instructions are easily found on the internet.  Easiest ones to follow are at <a href="https://www.raspberrypi.org/documentation/installation/noobs.md">https://www.raspberrypi.org/documentation/installation/noobs.md</a></p>
-  </li>
-  <li>
-    <p><strong>Changing RTSP URL’s:</strong></p>
-
-    <p>This easiest way to update your RTSP URL’s is to edit the files that were copied from the git folder onto your pi.  This can be done by running:</p>
-
-    <p><code>nano ~/cams.sh</code></p>
-  </li>
-</ul>
 </div>
-  
-  
 
-
-        </article>
+      </div>
       
-      
-        <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-          
-  <header class="page-header">
+    </article>
     
-      <p class="meta text-muted text-uppercase">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2015-08-10T21:02:17-07:00"  data-updated="true" itemprop="datePublished dateCreated">Mon 10 Aug 2015,  9:02 PM</time>
-        
-      </p>
-    
-    
-      <h2 class="entry-title" itemprop="name headline"><a href="/blog/2015/08/10/welcome-to-my-blog/" itemprop="url">Welcome to My Blog!</a></h2>
-    
-  </header>
-
-
-  <div class="entry-content clearfix" itemprop="articleBody description"><p>Hey Guys! Thanks for checking out my blog.</p>
-
-<p>I don’t have much here yet but I soon hope to start posting some of my setup and code soon to use Munki, PuppetServer, Simain, Sal, MunkiReport, Crypt, MacNamer, and Imagr to set up a full fledged automated mac management configuration and reporting solution.</p>
-</div>
-  
-  
-
-
-        </article>
-      
-    </div>
-
-    <ul class="pager">
-      
-        <li class="previous disabled"><a href="#">&larr;&nbsp;Older</a></li>
-      
-      <li><a href="/blog/archives">Blog Archives</a></li>
-      
-        <li class="next disabled"><a href="#">Newer&nbsp;&rarr;</a></li>
-      
-    </ul>
   </div>
 
   
@@ -312,19 +172,6 @@
   </div>
 
 
-</section>
-<section class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Recent Posts</h3>
-  </div>
-  
-  <div id="recent_posts" class="list-group">
-    
-    <a class="list-group-item " href="/blog/2015/08/21/raspberry-pi-camera-matrix/">Raspberry Pi Camera Matrix</a>
-    
-    <a class="list-group-item " href="/blog/2015/08/10/welcome-to-my-blog/">Welcome to My Blog!</a>
-    
-  </div>
 </section>
 <section class="panel panel-default clearfix">
   <div class="panel-heading">
@@ -397,7 +244,7 @@
       </a>
     
     
-    <a class="list-group-item " href="/blog/categories/unifi/index.html">
+    <a class="list-group-item active" href="/blog/categories/unifi/index.html">
         <span class="badge">1</span>
         unifi
       </a>

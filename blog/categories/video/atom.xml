@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[A Church MacAdmin's Blog]]></title>
-  <link href="http://www.mholt.tech/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Video, | A Church MacAdmin's Blog]]></title>
+  <link href="http://www.mholt.tech/blog/categories/video/atom.xml" rel="self"/>
   <link href="http://www.mholt.tech/"/>
   <updated>2015-08-21T15:19:19-07:00</updated>
   <id>http://www.mholt.tech/</id>
@@ -127,17 +127,6 @@
     <p><code>nano ~/cams.sh</code></p>
   </li>
 </ul>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Welcome to My Blog!]]></title>
-    <link href="http://www.mholt.tech/blog/2015/08/10/welcome-to-my-blog/"/>
-    <updated>2015-08-10T21:02:17-07:00</updated>
-    <id>http://www.mholt.tech/blog/2015/08/10/welcome-to-my-blog</id>
-    <content type="html"><![CDATA[<p>Hey Guys! Thanks for checking out my blog.</p>
-
-<p>I don’t have much here yet but I soon hope to start posting some of my setup and code soon to use Munki, PuppetServer, Simain, Sal, MunkiReport, Crypt, MacNamer, and Imagr to set up a full fledged automated mac management configuration and reporting solution.</p>
 ]]></content>
   </entry>
   
