@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ufv, | A Church MacAdmin's Blog]]></title>
   <link href="http://www.mholt.tech/blog/categories/ufv/atom.xml" rel="self"/>
   <link href="http://www.mholt.tech/"/>
-  <updated>2015-08-21T15:19:19-07:00</updated>
+  <updated>2015-08-21T15:20:39-07:00</updated>
   <id>http://www.mholt.tech/</id>
   <author>
     <name><![CDATA[Michael Holt]]></name>
@@ -67,8 +67,9 @@
         <p><code>cd ~/raspicams</code></p>
       </li>
       <li>
-        <p>edit cams.sh by typing:
-   nano cams.sh</p>
+        <p>edit cams.sh by typing:</p>
+
+        <p><code>nano cams.sh</code></p>
       </li>
       <li>
         <p>replace <rtsp_url_using_ip> with the RTSP url's for your cameras (I recommend using the Low Quality to save bandwidth and using an IP Address instead of FQDN to ensure no issues arrise.)  This url can be found in the NVR under RTSP Service when editing a camera</rtsp_url_using_ip></p>
