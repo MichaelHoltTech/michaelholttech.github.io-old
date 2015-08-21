@@ -59,6 +59,7 @@ a.twitter_fav_icon:hover {
 
 p.tweet {
     width: 100%;
+    word-wrap: break-word;
 }
 
 p.timePosted a {
