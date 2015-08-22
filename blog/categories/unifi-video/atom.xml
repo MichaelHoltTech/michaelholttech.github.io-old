@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Unifi Video | A Church MacAdmin's Blog]]></title>
   <link href="http://www.mholt.tech/blog/categories/unifi-video/atom.xml" rel="self"/>
   <link href="http://www.mholt.tech/"/>
-  <updated>2015-08-21T15:50:50-07:00</updated>
+  <updated>2015-08-21T23:39:02-07:00</updated>
   <id>http://www.mholt.tech/</id>
   <author>
     <name><![CDATA[Michael Holt]]></name>
@@ -18,9 +18,9 @@
     <link href="http://www.mholt.tech/blog/2015/08/21/raspberry-pi-camera-matrix/"/>
     <updated>2015-08-21T14:46:39-07:00</updated>
     <id>http://www.mholt.tech/blog/2015/08/21/raspberry-pi-camera-matrix</id>
-    <content type="html"><![CDATA[<p>Over the last few months we’ve been upgrading our Security Cameras, replacing a 10 year old vitek system with the Ubiquiti Unifi Video system.  We just finished installing the last of these Cameras and that included the need to find a new solution for our Children’s Cameras to be displayed onto two TV’s.  I found a Forum Post on the Ubiquiti Community that documented one person’s script to display a <a href="http://community.ubnt.com/t5/UniFi-Video/Tutorial-Raspberry-Pi-4-Cam-Matrix-Viewer-Appliance/m-p/1253309#U1253309">2x2 Camera Matrix on a Raspberry Pi</a></p>
-
-<p>So I went ahead and order 2x Raspberry Pi’s to power both of these displays and thought “Perfect, someone else has done the leg work all I have to do is plug in the RTSP URL’s and presto”.  Unfortunatly, I ran into some issues with screen causing the video to jump a few seconds instead of playing smoothly.  I also couldn’t get the code working as an init.d so I took a different approach using rc.local.</p>
+    <content type="html"><![CDATA[<p>Over the last few months we’ve been upgrading our Security Cameras, replacing a 10 year old vitek system with the Ubiquiti Unifi Video system.  We just finished installing the last of these Cameras and that included the need to find a new solution for our Children’s Cameras to be displayed onto two TV’s.  I found a Forum Post on the Ubiquiti Community that documented one person’s script to display a <a href="http://community.ubnt.com/t5/UniFi-Video/Tutorial-Raspberry-Pi-4-Cam-Matrix-Viewer-Appliance/m-p/1253309#U1253309">2x2 Camera Matrix on a Raspberry Pi</a>.
+<!--more-->
+So I went ahead and order 2x Raspberry Pi’s to power both of these displays and thought “Perfect, someone else has done the leg work all I have to do is plug in the RTSP URL’s and presto”.  Unfortunatly, I ran into some issues with screen causing the video to jump a few seconds instead of playing smoothly.  I also couldn’t get the code working as an init.d so I took a different approach using rc.local.</p>
 
 <p>For those that are interested in how to make this happen here’s the instructions and code:</p>
 
