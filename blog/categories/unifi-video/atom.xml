@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Unifi Video | A Church MacAdmin's Blog]]></title>
   <link href="http://www.mholt.tech/blog/categories/unifi-video/atom.xml" rel="self"/>
   <link href="http://www.mholt.tech/"/>
-  <updated>2015-08-29T10:26:04-07:00</updated>
+  <updated>2015-08-29T10:35:48-07:00</updated>
   <id>http://www.mholt.tech/</id>
   <author>
     <name><![CDATA[Michael Holt]]></name>
@@ -152,7 +152,8 @@ sudo ln -s /home/pi/PiCamMatrix/init.d/cambottomright /etc/init.d/cambottomright
     <link href="http://www.mholt.tech/blog/2015/08/21/raspberry-pi-camera-matrix/"/>
     <updated>2015-08-21T14:46:39-07:00</updated>
     <id>http://www.mholt.tech/blog/2015/08/21/raspberry-pi-camera-matrix</id>
-    <content type="html"><![CDATA[<p>Over the last few months we’ve been upgrading our Security Cameras, replacing a 10 year old vitek system with the Ubiquiti Unifi Video system.  We just finished installing the last of these Cameras and that included the need to find a new solution for our Children’s Cameras to be displayed onto two TV’s.  I found a Forum Post on the Ubiquiti Community that documented one person’s script to display a <a href="http://community.ubnt.com/t5/UniFi-Video/Tutorial-Raspberry-Pi-4-Cam-Matrix-Viewer-Appliance/m-p/1253309#U1253309">2x2 Camera Matrix on a Raspberry Pi</a></p>
+    <content type="html"><![CDATA[<h2 id="i-have-posted-version-2-of-this-script-herehttpwwwmholttechblog20150829pi-cam-matrix-v2">I have posted version 2 of this script <a href="http://www.mholt.tech/blog/2015/08/29/pi-cam-matrix-v2/">HERE</a></h2>
+<p>Over the last few months we’ve been upgrading our Security Cameras, replacing a 10 year old vitek system with the Ubiquiti Unifi Video system.  We just finished installing the last of these Cameras and that included the need to find a new solution for our Children’s Cameras to be displayed onto two TV’s.  I found a Forum Post on the Ubiquiti Community that documented one person’s script to display a <a href="http://community.ubnt.com/t5/UniFi-Video/Tutorial-Raspberry-Pi-4-Cam-Matrix-Viewer-Appliance/m-p/1253309#U1253309">2x2 Camera Matrix on a Raspberry Pi</a></p>
 
 <p>So I went ahead and order 2x Raspberry Pi’s to power both of these displays and thought “Perfect, someone else has done the leg work all I have to do is plug in the RTSP URL’s and presto”.  Unfortunatly, I ran into some issues with screen causing the video to jump a few seconds instead of playing smoothly.  I also couldn’t get the code working as an init.d so I took a different approach using rc.local.</p>
 
