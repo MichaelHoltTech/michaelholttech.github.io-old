@@ -131,6 +131,63 @@
 
 
 
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2015-08-29T09:50:39-07:00"  data-updated="true" itemprop="datePublished dateCreated">Sat 29 Aug 2015,  9:50 AM</time>
+        
+           | <a href="/blog/2015/08/29/pi-cam-matrix-v2/#disqus_thread" itemprop="discussionUrl"
+             data-disqus-identifier="http://www.mholt.tech/blog/2015/08/29/pi-cam-matrix-v2/">Comments</a>
+        
+      </p>
+    
+    
+      <h2 class="entry-title" itemprop="name headline"><a href="/blog/2015/08/29/pi-cam-matrix-v2/" itemprop="url">Pi Cam Matrix V2</a></h2>
+    
+  </header>
+
+
+  <div class="entry-content clearfix" itemprop="articleBody description"><p>After a few days in production I discovered that over time the Pi’s would lose connection to the RTSP feeds.  The only two ways to resolve this were to reboot the Pi or SSH into the Pi.  Because of this I started back at the beginning and was able to develop another way of running this matrix that would automatically reload the RTSP feed if it was lost.  The initial Pi Setup instructions are identical to my last post, <a href="http://www.mholt.tech/blog/2015/08/21/raspberry-pi-camera-matrix/">Raspberry Pi Camera Matrix</a>, the differences come in with setting up the new code base.</p>
+
+<p>For those that are interested in how to make this happen here’s the instructions and code:</p>
+
+<p><strong>What you’ll need:</strong></p>
+
+<ul>
+  <li>Raspberry Pi2 (I got the Canakit Raspberry Pi 2 - Complete Starter Kit off of Amazon, comes with everything you need for this project)</li>
+  <li>Unifi NVR Software running the most recent stable release</li>
+  <li>HDTV or Computer Monitor capable of 1080p</li>
+  <li>MicroSD to SD Card Adapter (Optional, only needed if you have to re-install raspbian)</li>
+  <li>Keyboard for initial setup</li>
+</ul>
+
+</div>
+  
+  
+    <footer>
+      <a class="read-more btn btn-default" href="/blog/2015/08/29/pi-cam-matrix-v2/">Read on &rarr;</a>
+    </footer>
+  
+
+
+        </article>
+      
+      
+        <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+          
+  <header class="page-header">
+    
+      <p class="meta text-muted text-uppercase">
+        
+
+
+
+
+
+
+
+
+
+
+
+
 <span class="glyphicon glyphicon-calendar"></span> <time datetime="2015-08-21T14:46:39-07:00"  data-updated="true" itemprop="datePublished dateCreated">Fri 21 Aug 2015,  2:46 PM</time>
         
            | <a href="/blog/2015/08/21/raspberry-pi-camera-matrix/#disqus_thread" itemprop="discussionUrl"
@@ -144,7 +201,22 @@
   </header>
 
 
-  <div class="entry-content clearfix" itemprop="articleBody description"><p>Over the last few months we’ve been upgrading our Security Cameras, replacing a 10 year old vitek system with the Ubiquiti Unifi Video system.  We just finished installing the last of these Cameras and that included the need to find a new solution for our Children’s Cameras to be displayed onto two TV’s.  I found a Forum Post on the Ubiquiti Community that documented one person’s script to display a <a href="http://community.ubnt.com/t5/UniFi-Video/Tutorial-Raspberry-Pi-4-Cam-Matrix-Viewer-Appliance/m-p/1253309#U1253309">2x2 Camera Matrix on a Raspberry Pi</a>.
+  <div class="entry-content clearfix" itemprop="articleBody description"><p>Over the last few months we’ve been upgrading our Security Cameras, replacing a 10 year old vitek system with the Ubiquiti Unifi Video system.  We just finished installing the last of these Cameras and that included the need to find a new solution for our Children’s Cameras to be displayed onto two TV’s.  I found a Forum Post on the Ubiquiti Community that documented one person’s script to display a <a href="http://community.ubnt.com/t5/UniFi-Video/Tutorial-Raspberry-Pi-4-Cam-Matrix-Viewer-Appliance/m-p/1253309#U1253309">2x2 Camera Matrix on a Raspberry Pi</a></p>
+
+<p>So I went ahead and order 2x Raspberry Pi’s to power both of these displays and thought “Perfect, someone else has done the leg work all I have to do is plug in the RTSP URL’s and presto”.  Unfortunatly, I ran into some issues with screen causing the video to jump a few seconds instead of playing smoothly.  I also couldn’t get the code working as an init.d so I took a different approach using rc.local.</p>
+
+<p>For those that are interested in how to make this happen here’s the instructions and code:</p>
+
+<p><strong>What you’ll need:</strong></p>
+
+<ul>
+  <li>Raspberry Pi2 (I got the Canakit Raspberry Pi 2 - Complete Starter Kit off of Amazon, comes with everything you need for this project)</li>
+  <li>Unifi NVR Software running the most recent stable release</li>
+  <li>HDTV or Computer Monitor capable of 1080p</li>
+  <li>MicroSD to SD Card Adapter (Optional, only needed if you have to re-install raspbian)</li>
+  <li>Keyboard for initial setup</li>
+</ul>
+
 </div>
   
   
@@ -233,6 +305,8 @@
   
   <div id="recent_posts" class="list-group">
     
+    <a class="list-group-item " href="/blog/2015/08/29/pi-cam-matrix-v2/">Pi Cam Matrix V2</a>
+    
     <a class="list-group-item " href="/blog/2015/08/21/raspberry-pi-camera-matrix/">Raspberry Pi Camera Matrix</a>
     
     <a class="list-group-item " href="/blog/2015/08/10/welcome-to-my-blog/">Welcome to My Blog!</a>
@@ -305,19 +379,19 @@
     
     
     <a class="list-group-item " href="/blog/categories/unifi-video/index.html">
-        <span class="badge">1</span>
+        <span class="badge">2</span>
         unifi video
       </a>
     
     
     <a class="list-group-item " href="/blog/categories/ubquiti/index.html">
-        <span class="badge">1</span>
+        <span class="badge">2</span>
         ubquiti
       </a>
     
     
     <a class="list-group-item " href="/blog/categories/raspberry-pi/index.html">
-        <span class="badge">1</span>
+        <span class="badge">2</span>
         raspberry pi
       </a>
     
