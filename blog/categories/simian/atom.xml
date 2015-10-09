@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Simian | A Church MacAdmin's Blog]]></title>
   <link href="http://www.mholt.tech/blog/categories/simian/atom.xml" rel="self"/>
   <link href="http://www.mholt.tech/"/>
-  <updated>2015-10-08T20:14:28-07:00</updated>
+  <updated>2015-10-08T20:15:19-07:00</updated>
   <id>http://www.mholt.tech/</id>
   <author>
     <name><![CDATA[Michael Holt]]></name>
@@ -24,9 +24,11 @@
   <p>“In the beginning God created…” the Mac… “and it was good”</p>
 </blockquote>
 
-<p>Ok maybe I went a little far in that one.  I came on staff at Real Life Church in 2012 and at that time we were mostly a PC shop with the exception being Pastors exclusively having a Mac (With Local Admin Access and no admin account for IT).  Over the next 2 years we realized that we got significantly more support requests on our PCs than for our Macs. We were running on an aging SBS 2008 server that was maxed out on licensing and we were continuing to grow.  After numerous conversations with my Director and leadership the decision was clear that we needed to make the transition to a 100% Mac shop in our church.<br />
-<!--more--> 
-This decision was based on the need to purchase new hardware and spend hundreds of man hours (as the solo IT Admin) in building out a new server infrastructure to manage the windows Machines with no guarantee that it would cut down on the ongoing support needs.  The direction was clear at the beginning of 2014 that we would be transitioning to the Macs as soon as we had the capital to spend on them.</p>
+<p>Ok maybe I went a little far in that one.  I came on staff at Real Life Church in 2012 and at that time we were mostly a PC shop with the exception being Pastors exclusively having a Mac (With Local Admin Access and no admin account for IT).  Over the next 2 years we realized that we got significantly more support requests on our PCs than for our Macs. We were running on an aging SBS 2008 server that was maxed out on licensing and we were continuing to grow.  After numerous conversations with my Director and leadership the decision was clear that we needed to make the transition to a 100% Mac shop in our church.</p>
+
+<!--more-->
+
+<p>This decision was based on the need to purchase new hardware and spend hundreds of man hours (as the solo IT Admin) in building out a new server infrastructure to manage the windows Machines with no guarantee that it would cut down on the ongoing support needs.  The direction was clear at the beginning of 2014 that we would be transitioning to the Macs as soon as we had the capital to spend on them.</p>
 
 <p>Knowing this, I began to research and address ways to manage software, patches, and support the new influx of Macs.</p>
 
