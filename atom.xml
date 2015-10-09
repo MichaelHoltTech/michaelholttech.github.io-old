@@ -4,7 +4,7 @@
   <title><![CDATA[A Church MacAdmin's Blog]]></title>
   <link href="http://www.mholt.tech/atom.xml" rel="self"/>
   <link href="http://www.mholt.tech/"/>
-  <updated>2015-10-08T20:57:11-07:00</updated>
+  <updated>2015-10-08T20:57:45-07:00</updated>
   <id>http://www.mholt.tech/</id>
   <author>
     <name><![CDATA[Michael Holt]]></name>
@@ -114,12 +114,9 @@ One of the continuous debates is Admin vs No Admin regardless of platform (Mac v
   <li>
     <p><a href="https://www.screenconnect.com/"><strong>Screenconnect</strong></a>, an Unattended Remote Support software for Mac/PC/Linux.  We use this to be able to remotely support our Users.</p>
   </li>
-</ol>
-
-<p><strong>Not Yet Implemented:</strong></p>
-
-<ol>
-  <li><a href="https://github.com/grahamgilbert/imagr"><strong>Imagr</strong></a>, an open source replacement to DeployStudio for workstation imaging and thin-provisioning.</li>
+  <li>
+    <p><strong>Not Yet Implemented</strong> - <a href="https://github.com/grahamgilbert/imagr"><strong>Imagr</strong></a>, an open source replacement to DeployStudio for workstation imaging and thin-provisioning.</p>
+  </li>
 </ol>
 
 <p>Everything except Simian runs inside a single server on Digital Ocean inside of Docker Containers.  I plan on publishing additional information on my setup and instructions on how to create this setup in the near future.</p>
