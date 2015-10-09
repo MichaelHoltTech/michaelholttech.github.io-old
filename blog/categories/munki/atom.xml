@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Munki | A Church MacAdmin's Blog]]></title>
   <link href="http://www.mholt.tech/blog/categories/munki/atom.xml" rel="self"/>
   <link href="http://www.mholt.tech/"/>
-  <updated>2015-10-08T20:18:44-07:00</updated>
+  <updated>2015-10-08T20:56:43-07:00</updated>
   <id>http://www.mholt.tech/</id>
   <author>
     <name><![CDATA[Michael Holt]]></name>
@@ -110,6 +110,9 @@ One of the continuous debates is Admin vs No Admin regardless of platform (Mac v
   </li>
   <li>
     <p><a href="https://github.com/lindegroup/autopkgr"><strong>Autopkgr</strong></a>, ties into Autopkg and checks for software updates every night and sends an email alert when software updates are installed</p>
+  </li>
+  <li>
+    <p><a href="https://www.screenconnect.com/"><strong>Screenconnect</strong></a>, an Unattended Remote Support software for Mac/PC/Linux.</p>
   </li>
 </ol>
 
