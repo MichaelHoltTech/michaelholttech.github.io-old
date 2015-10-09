@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Welcome to My Blog! - A Church MacAdmin's Blog</title>
+  <title>'Our Path to Mac Mangement' - A Church MacAdmin's Blog</title>
   <meta name="author" content="Michael Holt">
 
   
@@ -14,15 +14,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.mholt.tech/blog/2015/08/10/welcome-to-my-blog/">
+  <link rel="canonical" href="http://www.mholt.tech/blog/2015/10/08/our-path-to-mac-mangement/">
   <link href="/favicon.png" type="image/png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="A Church MacAdmin's Blog" type="application/atom+xml">
 
   <!-- http://opengraphprotocol.org/ -->
   <meta name="twitter:card" content="summary_large_image">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="http://www.mholt.tech/blog/2015/08/10/welcome-to-my-blog/">
-  <meta property="og:title" content="Welcome to My Blog! - A Church MacAdmin's Blog">
+  <meta property="og:url" content="http://www.mholt.tech/blog/2015/10/08/our-path-to-mac-mangement/">
+  <meta property="og:title" content="'Our Path to Mac Mangement' - A Church MacAdmin's Blog">
   
 
   <!-- ... -->
@@ -127,7 +127,7 @@
 
 
 
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2015-08-10T21:02:17-07:00"  data-updated="true" itemprop="datePublished dateCreated">Mon 10 Aug 2015,  9:02 PM</time>
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2015-10-08T19:48:15-07:00"  data-updated="true" itemprop="datePublished dateCreated">Thu  8 Oct 2015,  7:48 PM</time>
         
            | <a href="#disqus_thread" itemprop="discussionUrl"
              data-disqus-identifier="http://www.mholt.tech">Comments</a>
@@ -136,16 +136,113 @@
     
     
     <h1 class="entry-title" itemprop="name headline">
-        Welcome to My Blog!
+        'Our Path to Mac Mangement'
         
     </h1>
     
   </header>
 
 
-<div class="entry-content clearfix" itemprop="articleBody description"><p>Hey Guys! Thanks for checking out my blog.</p>
+<div class="entry-content clearfix" itemprop="articleBody description"><h3 id="where-we-started">Where we Started</h3>
 
-<p>I don’t have much here yet but I soon hope to start posting some of my setup and code soon to use Munki, PuppetServer, Simain, Sal, MunkiReport, Crypt, MacNamer, and Imagr to set up a full fledged automated mac management configuration and reporting solution.</p>
+<blockquote>
+  <p>“In the beginning God created…” the Mac… “and it was good”</p>
+</blockquote>
+
+<p>Ok maybe I went a little far in that one.  I came on staff at Real Life Church in 2012 and at that time we were mostly a PC shop with the exception being Pastors exclusively having a Mac (With Local Admin Access and no admin account for IT).  Over the next 2 years we realized that we got significantly more support requests on our PCs than for our Macs. We were running on an aging SBS 2008 server that was maxed out on licensing and we were continuing to grow.  After numerous conversations with my Director and leadership the decision was clear that we needed to make the transition to a 100% Mac shop in our church.</p>
+
+<p>This decision was based on the need to purchase new hardware and spend hundreds of man hours (as the solo IT Admin) in building out a new server infrastructure to manage the windows Machines with no guarantee that it would cut down on the ongoing support needs.  The direction was clear at the beginning of 2014 that we would be transitioning to the Macs as soon as we had the capital to spend on them.</p>
+
+<p>Knowing this, I began to research and address ways to manage software, patches, and support the new influx of Macs.</p>
+
+<h3 id="introducing-the-munki">Introducing the Munki</h3>
+
+<p><img src="https://lh3.googleusercontent.com/-SZsDtJV44Ic/T8ytQjvo24I/AAAAAAAAAlc/A4b9DjdBWGk/s640/blogger-image-1072467874.jpg" alt="alt text" title="Oh No, Monkeys on a Mac! - Image courtesy of http://nikiwallacedesign.blogspot.com/2012/06/think-first-design-later.html" /></p>
+
+<p>Ok so I’m not actually talking about a real Monkey here.  Munki is a set of tools that can be used to manage software installs on OS X Client Machines.  It was developed by Gregg Neagle (@gregneagle) at Walt Disney Animation Studios and was open sourced for anyone to use and contribute to.  I had heard about Munki a couple of times in discussions with Churches and other people about how to manage a Mac and finally decided to start looking into it.  In addition to do managed and optional installs as well as updates of 3rd party software, it is also capable of installing Apple Software Updates.</p>
+
+<h3 id="our-requirements-for-staff-macs">Our Requirements for Staff Macs</h3>
+
+<p>One of the first things we decided on was some of the requirements and restrictions that we wanted in place on the Mac.  Every organization is different but this is where we settled.</p>
+
+<ol>
+  <li>
+    <p>No end user will be an administrator on their Machine</p>
+  </li>
+  <li>
+    <p>Only approved software can be installed and can be found inside Munki</p>
+  </li>
+  <li>
+    <p>No App Store apps allowed
+One of the continuous debates is Admin vs No Admin regardless of platform (Mac vs PC).  We decided on the no admin approach because we did not want our staff being able to install unapproved software or changing system settings that could negatively affect their Machine.</p>
+  </li>
+</ol>
+
+<h3 id="challenges">Challenges</h3>
+
+<p>I spent about 10 months developing our Munki infrastructure and learning how it worked.  Part of the reason for taking this long is when first evaluating it at the beginning of the year there was already progress being made on version 2 that turned Munki into a replica of the Apple App Store in terms of layout and usability.</p>
+
+<p>The primary opposition we faced was a number of employees responded with: “I’ve always used a PC and have never touched a Mac, how am I supposed to get my job done?”  We encouraged our users to keep an open mind and we spent time with them after migrating their data showing them the basics of how to use a Mac and spending 15-20 minutes showing them the basics on how to open documents and applications.  Within a few months I was hearing from everyone that they “loved” their Macs and are glad to have them.</p>
+
+<h3 id="issues-with-non-admins-and-munki">Issues with Non-Admins and Munki</h3>
+
+<p>After a few months in we started finding a few issues with our configuration and stance of no Local Admin access.  This included:</p>
+
+<ol>
+  <li>
+    <p>Users could not change their energy saver preferences</p>
+  </li>
+  <li>
+    <p>Users could not install home printers</p>
+  </li>
+  <li>
+    <p>Printers would “pause” when running out of paper or toner, and paper jams. Admin credentials were required to resume printing</p>
+  </li>
+  <li>
+    <p>Management of software updates became cumbersome and users were requesting software that would have been available in the Mac App Store</p>
+  </li>
+</ol>
+
+<h3 id="our-next-steps">Our Next Steps</h3>
+
+<p>We have been using Munki for a year now and when re-evaluating our setup and options we discovered that we were spending significantly more than we had anticipated by running our system on Amazon EC2.  We also wanted to address some underlying issues with configuration management, printers, and opening up the App Store.  This led us to make some new changes which I will highlight here and detail further in future blog posts.</p>
+
+<p>We decided to go with the following systems to comprise our Mac Management Solution:</p>
+
+<ol>
+  <li>
+    <p><a href="https://github.com/google/simian"><strong>Simian</strong></a>, a backend solution to power the Munki client, hosted on Google App Engine and developed by Google MacOps, along with customizations to Munki to create a secure connection between the client and server.</p>
+  </li>
+  <li>
+    <p><a href="https://puppetlabs.com/"><strong>Puppet</strong></a>, a configuration management system that allows you to define the state of your Machines.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/Munkireport/Munkireport-php"><strong>Munkireport-php</strong></a>, a powerful system reporting utility that provides detailed system information on your Macs</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/grahamgilbert/Crypt"><strong>Crypt</strong></a>, a Filevault Key Escrow solution built by Graham Gilbert for recording filevault recovery keys</p>
+  </li>
+  <li>
+    <p><a href="github.com/grahamgilbert/Macnamer"><strong>Macnamer</strong></a>, a web app and Mac script that runs on your Mac to force your Machine to follow a naming convention with an automatically generated number suffix. Another solution built by Graham Gilbert</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/salopensource/sal"><strong>Sal</strong></a>, a Multi-Tennant reporting dashboard similar to Munkireport that provides another way of viewing system information.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/autopkg/autopkg"><strong>Autopkg</strong></a>, automates the download and manifest creation of software for import into simian.  This is not fully automated but allows me to simply copy paste into Simian to provide updates.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/lindegroup/autopkgr"><strong>Autopkgr</strong></a>, ties into Autopkg and checks for software updates every night and sends an email alert when software updates are installed</p>
+  </li>
+</ol>
+
+<p><strong>Not Yet Implemented:</strong></p>
+
+<ol>
+  <li><a href="https://github.com/grahamgilbert/imagr"><strong>Imagr</strong></a>, an open source replacement to DeployStudio for workstation imaging and thin-provisioning.</li>
+</ol>
+
+<p>Everything except Simian runs inside a single server on Digital Ocean inside of Docker Containers.  I plan on publishing additional information on my setup and instructions on how to create this setup in the near future.</p>
 </div>
 
 
@@ -169,13 +266,13 @@
 
 
 
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2015-08-10T21:02:17-07:00"  data-updated="true" itemprop="datePublished dateCreated">Mon 10 Aug 2015,  9:02 PM</time>
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2015-10-08T19:48:15-07:00"  data-updated="true" itemprop="datePublished dateCreated">Thu  8 Oct 2015,  7:48 PM</time>
           
 
 <span class="glyphicon glyphicon-tags"></span>&nbsp;
 <span class="categories">
   
-    <a class='category label label-primary' href='/blog/categories/misc/'>misc</a>
+    <a class='category label label-primary' href='/blog/categories/mac-management/'>mac management</a> <a class='category label label-primary' href='/blog/categories/munki/'>munki</a> <a class='category label label-primary' href='/blog/categories/simian/'>simian</a>
   
 </span>
 
@@ -184,7 +281,7 @@
         
           <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.mholt.tech/blog/2015/08/10/welcome-to-my-blog/" data-via="mholtrlc" data-counturl="http://www.mholt.tech/blog/2015/08/10/welcome-to-my-blog/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.mholt.tech/blog/2015/10/08/our-path-to-mac-mangement/" data-via="mholtrlc" data-counturl="http://www.mholt.tech/blog/2015/10/08/our-path-to-mac-mangement/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -198,8 +295,8 @@
         
           <ul class="meta text-muted pager">
             
+            <li class="previous"><a href="/blog/2015/08/29/pi-cam-matrix-v2/" title="Previous Post: Pi Cam Matrix v2">&laquo; Pi Cam Matrix v2</a></li>
             
-            <li class="next"><a href="/blog/2015/08/21/raspberry-pi-camera-matrix/" title="Next Post: Raspberry Pi Camera Matrix">Raspberry Pi Camera Matrix &raquo;</a></li>
             
           </ul>
         
@@ -402,8 +499,8 @@ twitterFetcher.fetch(config5);
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.mholt.tech/blog/2015/08/10/welcome-to-my-blog/';
-        var disqus_url = 'http://www.mholt.tech/blog/2015/08/10/welcome-to-my-blog/';
+        var disqus_identifier = 'http://www.mholt.tech/blog/2015/10/08/our-path-to-mac-mangement/';
+        var disqus_url = 'http://www.mholt.tech/blog/2015/10/08/our-path-to-mac-mangement/';
         var disqus_script = 'embed.js';
       
     (function () {

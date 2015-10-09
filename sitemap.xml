@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.mholt.tech/blog/2015/10/08/our-path-to-mac-mangement/</loc>
+    <lastmod>2015-10-08T19:48:15-07:00</lastmod>
+  </url>
+  <url>
     <loc>http://www.mholt.tech/blog/2015/08/29/pi-cam-matrix-v2/</loc>
     <lastmod>2015-08-29T09:50:39-07:00</lastmod>
   </url>
@@ -29,5 +33,14 @@
   </url>
   <url>
     <loc>http://www.mholt.tech/blog/categories/raspberry-pi/</loc>
+  </url>
+  <url>
+    <loc>http://www.mholt.tech/blog/categories/munki/</loc>
+  </url>
+  <url>
+    <loc>http://www.mholt.tech/blog/categories/simian/</loc>
+  </url>
+  <url>
+    <loc>http://www.mholt.tech/blog/categories/mac-management/</loc>
   </url>
 </urlset>
