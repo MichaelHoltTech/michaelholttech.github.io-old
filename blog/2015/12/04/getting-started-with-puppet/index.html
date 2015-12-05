@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Getting Started With Puppet - A Church MacAdmin's Blog</title>
+  <meta name="author" content="Michael Holt">
+
+  
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.mholt.tech/blog/2015/12/04/getting-started-with-puppet/">
+  <link href="/favicon.png" type="image/png" rel="icon">
+  <link href="/atom.xml" rel="alternate" title="A Church MacAdmin's Blog" type="application/atom+xml">
+
+  <!-- http://opengraphprotocol.org/ -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://www.mholt.tech/blog/2015/12/04/getting-started-with-puppet/">
+  <meta property="og:title" content="Getting Started With Puppet - A Church MacAdmin's Blog">
+  
+
+  <!-- ... -->
+
+<link href="http://bootswatch.com/yeti/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/stylesheets/twitter.css" rel="stylesheet" type="text/css">
+<link href="/stylesheets/aboutme.css" rel="stylesheet" type="text/css">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="/javascripts/footnote.js"></script>
+<script src="/javascripts/twitterFetcher_min.js"></script>
+<!-- ... -->
+
+
+  
+  <link href="/stylesheets/screen.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+
+  
+   <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-42255033-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+  <body   >
+    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+    <div id="wrap">
+      <header role="banner">
+        <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" title="toggle navbar" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">A Church MacAdmin's Blog</a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a rel="index" href="/">Blog</a>
+                </li>
+                <li >
+                    <a href="/blog/archives">Archives</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="subscribe-rss" href="/atom.xml" title="subscribe via RSS">
+                        <span class="visible-xs">RSS</span>
+                        <img class="hidden-xs" src="/images/rss.png" alt="RSS">
+                    </a>
+                </li>
+                
+            </ul>
+            
+                <form class="navbar-form navbar-right" action="https://www.google.com/search" method="GET">
+                    <input type="hidden" name="sitesearch" value="www.mholt.tech">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="q" placeholder="Search">
+                    </div>
+                </form>
+            
+        </div>
+    </div>
+</nav>
+
+
+      </header>
+      <div id="main" role="main" class="container">
+        <div id="content">
+          <div class="row">
+  <div class="page-content col-md-9" itemscope itemtype="http://schema.org/Blog">
+    <meta itemprop="name" content="A Church MacAdmin's Blog" />
+    
+    <meta itemprop="url" content="http://www.mholt.tech" />
+    <article class="hentry" role="article" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+      
+  <header class="page-header">
+    
+      <p class="meta text-muted text-uppercase">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2015-12-04T17:04:01-08:00"  data-updated="true" itemprop="datePublished dateCreated">Fri  4 Dec 2015,  5:04 PM</time>
+        
+           | <a href="#disqus_thread" itemprop="discussionUrl"
+             data-disqus-identifier="http://www.mholt.tech">Comments</a>
+        
+      </p>
+    
+    
+    <h1 class="entry-title" itemprop="name headline">
+        Getting Started With Puppet
+        
+    </h1>
+    
+  </header>
+
+
+<div class="entry-content clearfix" itemprop="articleBody description"><p>Back at the Church IT Roundtable in October I began sharing about how we have implemented a Mac Management solution using Open Source Tools and I promised to provide tutorials on how to get started.  I’ve spent the time rebuilding the Docker Container to automate the setup of a new Puppet Server because of some issues that my original container experiences on occasion.  This post is going to cover the basics of getting Docker &amp; Puppet up and running on a Ubuntu 14.04 server running Docker.  At the end of this post, you’ll have a working puppetserver and a mac checking into it.  Future posts will expand on how to use Puppet to configure your mac as well as the other parts of our environment mentioned in the <a href="/blog/2015/10/08/our-path-to-mac-management/">previous post</a>.</p>
+
+<!--more-->
+
+<h3 id="installing-docker">Installing Docker</h3>
+
+<p>I’m going to assume you already have a working Ubuntu 14.04 Server.  If not, I Highly recommend using Linode, which is what we use to run our Management Platform.  You can sign up <a href="https://www.linode.com/?r=eb7892d4b2b5528c799c9bab969491ae8b02970a">Here</a>.</p>
+
+<p>Our first job after SSH’ing into the server is to get Docker installed.  This is a very easy process.</p>
+
+<p>First lets makes sure we have <code>wget</code> installed:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code panel panel-default"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">which wget</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>If nothing is returned, we need to install <code>wget</code>:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code panel panel-default"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">sudo apt-get update
+</span><span class="line">sudo apt-get install wget</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>And now we can install Docker.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code panel panel-default"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">wget -qO- https://get.docker.com/ | sh</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Enter your password when asked and then you’re done.</p>
+
+<p>If you aren’t running as root (which isn’t secure anyways so I hope you aren’t), you can give a user access to Docker without having to grant sudo and preface all docker commands with sudo.  This can be done by running</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code panel panel-default"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">sudo usermod -aG docker &lt;username&gt;</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="clone-the-core-repo">Clone the Core Repo</h3>
+<p>Now before we continue with docker we need to clone the base configuration that our Puppetserver will be using.  I’m going to go with the assumption that you are familiar with git.  If this is you’re first time there are a lot of tutorials on the internet, personally I like to use a GUI and recommend <a href="https://www.sourcetreeapp.com/">SourceTree</a>.</p>
+
+<p>This is also going to be based on using Bitbucket for storing your configurations privately.  Bitbucket gives you unlimited <em>PRIVATE</em> repositories for free which I highly recommend doing to keep your configuration data private.  This is also compatible with GitHub as well.  You can get a BitBucket account <a href="https://bitbucket.org/">here</a>.</p>
+
+<p>Here’s how to get started with your own copy of the Core Repository:</p>
+
+<ol>
+  <li>To start off, go to Bitbucket’s website and log in.</li>
+  <li>Go to Repositories -&gt; Import Repository</li>
+  <li>For <strong>URL</strong>, enter: https://github.com/MichaelHoltTech/puppet-core_repo.git</li>
+  <li>For <strong>Name</strong>, you may keep the name of the imported repository or change this to anything you want.</li>
+  <li>For <strong>Access Level</strong>, make sure to check “This is a private repository”</li>
+  <li>Click <strong>Import Repository</strong> to import the base repository into your Bitbucket account.  It’ll take a moment for the code to import and then you can continue.</li>
+</ol>
+
+<h3 id="start-setting-up-puppetserver">Start setting up Puppetserver</h3>
+
+<p>Now we’re ready to go back to Docker and start setting up Puppetserver.  This is a very simple process.</p>
+
+<p>We’ll start off with creating what is called a Volume Container.  This will store the SSL Certificates used by Puppet so that the container can be updated as needed without worrying about losing some important configuration.</p>
+
+<p>On your Ubuntu server, start by running this command. <em>Note: If you are not logged in with root then preface all commands from here on out with sudo</em></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code panel panel-default"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">docker pull busybox
+</span><span class="line">docker run -d --name data_puppet \
+</span><span class="line">  -v /root/.ssh \
+</span><span class="line">  -v /var/lib/puppet/ssl \
+</span><span class="line">  busybox</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Now we have to create a file in order for the Puppetserver to know how to get your Core Repository.  If you skip this step you’ll run into some issues when we get to restarting the container.  I prefer nano, but you use whatever editor you prefer on the Linux Server.</p>
+
+<p>To begin, lets create some directories and grant all users inside of the Docker user group access.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code panel panel-default"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">sudo mkdir -p /usr/local/docker/puppetserver
+</span><span class="line">sudo chgrp -R docker /usr/local/docker
+</span><span class="line">sudo chmod -R 770 /usr/local/docker
+</span><span class="line">cd /usr/local/docker/puppetserver
+</span><span class="line">nano custom.yaml</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Inside of custom.yaml insert the following contents, replacing the repo url in single quotes with repo’s SSH URL found by clicking: … -&gt; Clone -&gt; Change HTTPS to SSH.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code panel panel-default"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">---
+</span><span class="line">repo_url: 'git@github.com:MichaelHoltTech/puppet-core_repo.git'</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Now lets go ahead and close and save this file</p>
+
+<p>Now that we have that out of the way we can get started with the Puppetserver.  Make sure you replace <code>puppet.example.com</code> with the url/hostname you intend to use for your puppet server.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code panel panel-default"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">docker pull michaelholttech/puppetserver
+</span><span class="line">docker run -d --name=puppetserver \
+</span><span class="line">  --volumes-from data_puppet \
+</span><span class="line">  -v /root/.ssh \
+</span><span class="line">  -v /var/lib/puppet/ssl \
+</span><span class="line">  -v /usr/local/docker/puppetserver/custom.yaml:/root/bootstrap/hiera/data/custom.yaml \
+</span><span class="line">  -e PUPPETSERVER_JAVA_ARGS="-Xms384m -Xmx384m -XX:MaxPermSize=256m" \
+</span><span class="line">  -p 8140:8140 \
+</span><span class="line">  -h puppet.example.com \
+</span><span class="line">  --restart="always" \
+</span><span class="line">  michaelholttech/puppetserver</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>After you have run those commands we need to monitor the logs for some important information that will be provided.  This can be done by running:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code panel panel-default"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">docker logs -f puppetserver</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Once the initial scripts have run you’ll see Public Key displayed in the logs.  You need to take this and enter it as a Deployment Key for your Repository.  This can be done by browsing to your repository on the Bitbucket Website, and then going to Setttings -&gt; Deployment Keys -&gt; Add Key.  Copy/Paste the Publickey starting with <code>ssh-rsa</code> and ending with <code>R10K Deployment Key</code></p>
+
+<p>Now that we’ve gotten that done we’re ready to let Puppet finish bootstraping itself.  This can be done by copy/pasting the commands after the Publickey in the  logs that were looking at in the last step.  You can also run:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code panel panel-default"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">docker stop puppetserver
+</span><span class="line">docker start puppetserver</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Now if you watch the logs again you can see puppet preparing itself</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code panel panel-default"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">docker logs -f puppetserver</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This will take several minutes to complete.  When it is done you will see a line saying <code>[p.s.m.master-service] Puppet Server has successfully started and is now ready to handle requests</code></p>
+
+<p>Now that your puppetserver is running there’s only one last command to run.  This command is only needed if there isn’t already data existing inside of <code>data_puppet</code>.  This command is also set up to automatically run ever 30 minutes inside of the container.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code panel panel-default"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">docker exec -it puppetserver puppet agent -t</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="set-up-youre-first-client">Set up you’re first client!</h3>
+
+<p>Whew we’re almost there.  Not much longer until you will have your first client checking into your brand new Puppetserver.</p>
+
+<p>Let’s start with a fresh Mac OS environment, be it a VM or spare computer.  We’re going to have to start off by installing two packages on the machine… Puppet &amp; Facter.</p>
+
+<p>Puppet v3.8.4 can be downloaded <a href="https://downloads.puppetlabs.com/mac/puppet-3.8.4.dmg"><strong>HERE</strong></a>.</p>
+
+<p>Facter v2.4.4 can be downloaded <a href="https://downloads.puppetlabs.com/mac/facter-2.4.4.dmg"><strong>HERE</strong></a>.</p>
+
+<p>Once downloaded go ahead and install these onto your test machine.</p>
+
+<p>At this point all that’s left is to get your machine configured.  This is extremly simple and can be done with running one command in terminal, replacing <code>puppet.example.com</code> with your puppetserver’s URL.  <em>If you don’t have a DNS record for it, make sure you add a manual entry inside of <code>/etc/hosts</code> on your test machine!</em></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code panel panel-default"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">sudo puppet agent -t --certname $(ioreg -l | awk '/IOPlatformSerialNumber/ { split($0, line, "\""); printf("%s\n", line[4]); }' | tr '[:upper:]' '[:lower:]') --waitforcert 20 --server puppet.example.com</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>You now have your first machine up and running on Puppet! Congratulations!</p>
+
+<p>There’s plenty of information online if you want to begin playing with some configuration settings inside of the Core Repository.</p>
+
+<p>We’ll go over this more in a future post, but to configure a role we need to create a fact on the local machine.  This can be done by running:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code panel panel-default"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">sudo mkdir -p /etc/facter/facts.d
+</span><span class="line">sudo nano /etc/facter/facts.d/computer_role.yaml</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Paste the following inside of <code>computer_role.yaml</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code panel panel-default"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">---
+</span><span class="line">computer_role: "test"</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Since the machine is now configured with puppet, you can trigger puppet by running a much simpler command:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code panel panel-default"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">sudo puppet agent -t</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>If you have added the computer_role fact, you should get an output similar to the following when you run <code>puppet agent -t</code>:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code panel panel-default"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">Info: Retrieving pluginfacts
+</span><span class="line">Info: Retrieving plugin
+</span><span class="line">Info: Loading facts
+</span><span class="line">Info: Caching catalog for c02n5heug3qj
+</span><span class="line">Info: Applying configuration version '1449305286'
+</span><span class="line">Notice: Test Role
+</span><span class="line">Notice: /Stage[main]/Roles::Test/Notify[Test Role]/message: defined 'message' as 'Test Role'
+</span><span class="line">Notice: Default Role
+</span><span class="line">Notice: /Stage[main]/Roles::Default/Notify[Default Role]/message: defined 'message' as 'Default Role'
+</span><span class="line">Notice: Common Profile
+</span><span class="line">Notice: /Stage[main]/Profiles::Common/Notify[Common Profile]/message: defined 'message' as 'Common Profile'
+</span><span class="line">Notice: Test Profile
+</span><span class="line">Notice: /Stage[main]/Profiles::Test/Notify[Test Profile]/message: defined 'message' as 'Test Profile'
+</span><span class="line">Notice: Finished catalog run in 13.84 seconds</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="additional-notes">Additional Notes</h3>
+
+<p>Whenever you make a change to your Core Repo, you also need to manually tell your Puppetserver to pull in the changes.  This can be done by running this on the server:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code panel panel-default"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">docker exec -it puppetserver r10k deploy environment -pv</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Yay! We’ve made it to the end and we now have a functional Puppetserver! If you’ve made it this far give yourself a pat on the back, it took me much longer to get up and running with Puppet when I first started.</p>
+
+<p>Here’s a few quick notes:</p>
+
+<ol>
+  <li>This is a new Docker image and could have some bugs and issues.  I’m relying on the community to help identify these issues.</li>
+  <li>I’m not an expert at this, I just started using puppet a few months ago myself.  If you see areas that could be improved feel free to submit a pull request.
+    <ol>
+      <li>The Puppetserver code can be found <a href="https://github.com/MichaelHoltTech/puppetserver"><strong>here</strong></a>.</li>
+      <li>The Core Repo code can be found <a href="https://github.com/MichaelHoltTech/puppet-core_repo/"><strong>here</strong></a>.</li>
+      <li>The Base Image code can be found <a href="https://github.com/MichaelHoltTech/baseimage"><strong>here</strong></a>.  It is based off of work done by phusion, located <a href="https://github.com/phusion/baseimage-docker"><strong>here</strong></a>.</li>
+    </ol>
+  </li>
+  <li>I’m currently not running this Image in Production.  I plan on moving over to it after the Christmas Holidays as I continue to document our Management Platform.</li>
+</ol>
+
+<p>Stay Tuned for the next post! No promises but i’ll see if I can at least get one more post up documenting how to begin programming some configuration options.  If I don’t get to it, I’ll definitely have time in January! (I’ll do my best not to keep you waiting 2 months this time)</p>
+</div>
+
+
+      <footer>
+        <p class="meta text-muted">
+          
+  
+
+<span class="glyphicon glyphicon-user"></span> <span class="byline author vcard" itemprop="author" itemscope itemtype="http://schema.org/Person">Posted by <span class="fn" itemprop="name">Michael Holt</span></span>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2015-12-04T17:04:01-08:00"  data-updated="true" itemprop="datePublished dateCreated">Fri  4 Dec 2015,  5:04 PM</time>
+          
+
+<span class="glyphicon glyphicon-tags"></span>&nbsp;
+<span class="categories">
+  
+    <a class='category label label-primary' href='/blog/categories/mac-management/'>mac management</a> <a class='category label label-primary' href='/blog/categories/puppet/'>puppet</a>
+  
+</span>
+
+
+        </p>
+        
+          <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.mholt.tech/blog/2015/12/04/getting-started-with-puppet/" data-via="mholtrlc" data-counturl="http://www.mholt.tech/blog/2015/12/04/getting-started-with-puppet/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+        
+        
+          <ul class="meta text-muted pager">
+            
+            <li class="previous"><a href="/blog/2015/10/08/our-path-to-mac-management/" title="Previous Post: Our path to Mac Management">&laquo; Our path to Mac Management</a></li>
+            
+            
+          </ul>
+        
+      </footer>
+    </article>
+    
+      <section>
+        <h2>Comments</h2>
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+    
+  </div>
+
+  
+  <aside class="sidebar col-md-3">
+    
+      <section class="panel panel-default clearfix">
+  <div class="panel-heading">
+      <h3 class="panel-title">About Me</h3>
+  </div>
+  <div class="list-group text-center">
+    <div class="circular"></div>
+    <p class="list-group-item-text about-me">I am an IT Administrator, Network Admin, Server Admin, Programmer, and Jack-Of-All-Trades serving the lord and the church with my talents.</p>
+    <p class="list-group-item-text about-me"><small>The opinions and posts on this site are my own and are not necessarily shared by my employer.</small></p>
+  </div>
+
+
+</section>
+<section class="panel panel-default clearfix">
+  <div class="panel-heading">
+      <h3 class="panel-title">GitHub Repos</h3>
+  </div>
+  <div class="list-group" id="gh_repos">
+    <p class="loading">Status updating...</p>
+  </div>
+  
+    <div class="gh-profile-link pull-right text-muted">
+      <a href="https://github.com/michaelholttech">@michaelholttech</a> on GitHub
+    </div>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'michaelholttech',
+            count: 4,
+            skip_forks: false,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<section class="panel panel-default clearfix">
+  <div class="panel-heading">
+      <h3 class="panel-title">Mailing List</h3>
+  </div>
+  <div class="list-group text-center">
+    <p></p>
+	<p class="list-group-item-text">Get notified of new blog posts</p>
+	<form action="http://tech.us11.list-manage.com/subscribe/post?u=a605d0cc07de819746666ff79&amp;id=ccfda3fdaa" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+    <div class="form-group list-group-item">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Your Email Here" autocomplete="off" name="EMAIL" id="mce-EMAIL">
+        <span class="input-group-btn">
+          <button class="btn btn-default" name="subscribe" id="mc-embedded-subscribe" type="button">Subscribe</button>
+        </span>
+      </div>
+    </div>
+	</form>
+</section>
+
+<section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Categories</h3>
+  </div>
+  <div class="list-group">
+    
+    
+    <a class="list-group-item " href="/blog/categories/misc/index.html">
+        <span class="badge">1</span>
+        misc
+      </a>
+    
+    
+    <a class="list-group-item " href="/blog/categories/unifi-video/index.html">
+        <span class="badge">2</span>
+        unifi video
+      </a>
+    
+    
+    <a class="list-group-item " href="/blog/categories/ubquiti/index.html">
+        <span class="badge">2</span>
+        ubquiti
+      </a>
+    
+    
+    <a class="list-group-item " href="/blog/categories/raspberry-pi/index.html">
+        <span class="badge">2</span>
+        raspberry pi
+      </a>
+    
+    
+    <a class="list-group-item " href="/blog/categories/munki/index.html">
+        <span class="badge">1</span>
+        munki
+      </a>
+    
+    
+    <a class="list-group-item " href="/blog/categories/simian/index.html">
+        <span class="badge">1</span>
+        simian
+      </a>
+    
+    
+    <a class="list-group-item " href="/blog/categories/mac-management/index.html">
+        <span class="badge">2</span>
+        mac management
+      </a>
+    
+    
+    <a class="list-group-item " href="/blog/categories/puppet/index.html">
+        <span class="badge">1</span>
+        puppet
+      </a>
+    
+  </div>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Twitter</h3>
+  </div>
+
+  <div id="tw-widget1"></div>
+  <div class="text-right text-muted" id="twit_footer">
+      <a href="https://twitter.com/mholtrlc">@mholtrlc</a> on Twitter
+    </div>
+</section>
+
+<script type="text/javascript">
+
+  var config5 = {
+  "id": '630536674305445888',
+  "domId": '',
+  "maxTweets": 3,
+  "enableLinks": true,
+  "showUser": true,
+  "showTime": true,
+  "dateFunction": '',
+  "showRetweet": false,
+  "customCallback": handleTweets,
+  "showInteraction": true,
+  "showImages": false
+};
+
+function handleTweets(tweets){
+    var x = tweets.length;
+    var n = 0;
+    var element = document.getElementById('tw-widget1');
+    var html = '<ul class="list-group">';
+    while(n < x) {
+      var tweet = tweets[n].replace(/<img[^>"']*((("[^"]*")|('[^']*'))[^"'>]*)*>/g,"");
+      html += '<li class="list-group-item">' + tweet + '</li>';
+      n++;
+    }
+    html += '</ul>';
+    element.innerHTML = html;
+}
+
+twitterFetcher.fetch(config5);
+  twitterFetcher.fetch(config1);
+</script>
+
+    
+  </aside>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+    <footer role="contentinfo"><div class="container">
+    <p class="text-muted credits">
+  Copyright &copy; 2015 - Michael Holt<br>
+  <small>
+      <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>,
+
+  </small>
+</p>
+
+</div>
+</footer>
+    
+
+<script type="text/javascript">
+      var disqus_shortname = 'mholttech';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.mholt.tech/blog/2015/12/04/getting-started-with-puppet/';
+        var disqus_url = 'http://www.mholt.tech/blog/2015/12/04/getting-started-with-puppet/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+<script src="/assets/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/javascripts/modernizr.js"></script>
+
+
+  </body>
+</html>
