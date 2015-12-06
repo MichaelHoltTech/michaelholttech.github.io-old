@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Misc on Michael Holt</title>
+    <link>http://localhost:1313/categories/misc/</link>
+    <description>Recent content in Misc on Michael Holt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/categories/misc/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Welcome to my Blog!</title>
+      <link>http://localhost:1313/blog/1/01/01/welcome-to-my-blog</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/1/01/01/welcome-to-my-blog</guid>
+      <description>&lt;p&gt;Hey Guys! Thanks for checking out my blog.&lt;/p&gt;
+
+&lt;p&gt;I don&amp;rsquo;t have much here yet but I soon hope to start posting some of my setup and code soon to use Munki, PuppetServer, Simain, Sal, MunkiReport, Crypt, MacNamer, and Imagr to set up a full fledged automated mac management configuration and reporting solution.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
