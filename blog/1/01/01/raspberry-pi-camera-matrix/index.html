@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>Raspberry Pi Camera Matrix &middot; Michael Holt</title>
+    <meta name="generator" content="Hugo 0.14" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Michael Holt">
+    
+    
+    <link rel="icon" href="http://localhost:1313/favicon.ico">
+    <link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png" />
+    <link rel="stylesheet" href="http://localhost:1313/css/style.css">
+    <link rel="stylesheet" href="http://localhost:1313/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://localhost:1313/css/monokai.css">
+    <link rel="stylesheet" href="http://localhost:1313/fancybox/jquery.fancybox.css">
+    <meta property="og:title" content="Raspberry Pi Camera Matrix" />
+<meta property="og:description" content="##I have posted version 2 of this script HERE
+Over the last few months we&rsquo;ve been upgrading our Security Cameras, replacing a 10 year old vitek system with the Ubiquiti Unifi Video system.  We just finished installing the last of these Cameras and that included the need to find a new solution for our Children&rsquo;s Cameras to be displayed onto two TV&rsquo;s.  I found a Forum Post on the Ubiquiti Community that documented one person&rsquo;s script to display a 2x2 Camera Matrix on a Raspberry Pi
+
+So I went ahead and order 2x Raspberry Pi&rsquo;s to power both of these displays and thought &ldquo;Perfect, someone else has done the leg work all I have to do is plug in the RTSP URL&rsquo;s and presto&rdquo;.  Unfortunatly, I ran into some issues with screen causing the video to jump a few seconds instead of playing smoothly.  I also couldn&rsquo;t get the code working as an init.d so I took a different approach using rc.local.
+
+For those that are interested in how to make this happen here&rsquo;s the instructions and code:
+
+What you&rsquo;ll need:
+
+
+Raspberry Pi2 (I got the Canakit Raspberry Pi 2 - Complete Starter Kit off of Amazon, comes with everything you need for this project)
+Unifi NVR Software running the most recent stable release
+HDTV or Computer Monitor capable of 1080p
+MicroSD to SD Card Adapter (Optional, only needed if you have to re-install raspbian)
+Keyboard for initial setup
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/blog/1/01/01/raspberry-pi-camera-matrix" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content="Raspberry Pi Camera Matrix">
+<meta itemprop="description" content="##I have posted version 2 of this script HERE
+Over the last few months we&rsquo;ve been upgrading our Security Cameras, replacing a 10 year old vitek system with the Ubiquiti Unifi Video system.  We just finished installing the last of these Cameras and that included the need to find a new solution for our Children&rsquo;s Cameras to be displayed onto two TV&rsquo;s.  I found a Forum Post on the Ubiquiti Community that documented one person&rsquo;s script to display a 2x2 Camera Matrix on a Raspberry Pi
+
+So I went ahead and order 2x Raspberry Pi&rsquo;s to power both of these displays and thought &ldquo;Perfect, someone else has done the leg work all I have to do is plug in the RTSP URL&rsquo;s and presto&rdquo;.  Unfortunatly, I ran into some issues with screen causing the video to jump a few seconds instead of playing smoothly.  I also couldn&rsquo;t get the code working as an init.d so I took a different approach using rc.local.
+
+For those that are interested in how to make this happen here&rsquo;s the instructions and code:
+
+What you&rsquo;ll need:
+
+
+Raspberry Pi2 (I got the Canakit Raspberry Pi 2 - Complete Starter Kit off of Amazon, comes with everything you need for this project)
+Unifi NVR Software running the most recent stable release
+HDTV or Computer Monitor capable of 1080p
+MicroSD to SD Card Adapter (Optional, only needed if you have to re-install raspbian)
+Keyboard for initial setup
+
+">
+
+
+
+<meta itemprop="wordCount" content="709">
+
+
+
+<meta itemprop="keywords" content="mac-management,munki,puppet,raspberry-pi,simian,ubiquiti,unifi-video,puppetserver," />
+
+    
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="Raspberry Pi Camera Matrix"/>
+<meta name="twitter:description" content="##I have posted version 2 of this script HERE
+Over the last few months we&rsquo;ve been upgrading our Security Cameras, replacing a 10 year old vitek system with the Ubiquiti Unifi Video system.  We just finished installing the last of these Cameras and that included the need to find a new solution for our Children&rsquo;s Cameras to be displayed onto two TV&rsquo;s.  I found a Forum Post on the Ubiquiti Community that documented one person&rsquo;s script to display a 2x2 Camera Matrix on a Raspberry Pi
+
+So I went ahead and order 2x Raspberry Pi&rsquo;s to power both of these displays and thought &ldquo;Perfect, someone else has done the leg work all I have to do is plug in the RTSP URL&rsquo;s and presto&rdquo;.  Unfortunatly, I ran into some issues with screen causing the video to jump a few seconds instead of playing smoothly.  I also couldn&rsquo;t get the code working as an init.d so I took a different approach using rc.local.
+
+For those that are interested in how to make this happen here&rsquo;s the instructions and code:
+
+What you&rsquo;ll need:
+
+
+Raspberry Pi2 (I got the Canakit Raspberry Pi 2 - Complete Starter Kit off of Amazon, comes with everything you need for this project)
+Unifi NVR Software running the most recent stable release
+HDTV or Computer Monitor capable of 1080p
+MicroSD to SD Card Adapter (Optional, only needed if you have to re-install raspbian)
+Keyboard for initial setup
+
+"/>
+
+
+
+</head>
+<body>
+<div class="container">
+
+<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="http://localhost:1313/" id="logo"><i class="logo" style="background-image: url('http://localhost:1313/css/images/logo.png')"></i><span class="site-title">Michael Holt</span></a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="http://localhost:1313/">Home</a>
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <a class="main-nav-link" href="http://localhost:1313/tags/">Tags</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://localhost:1313/categories/">Categories</a>
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="http://localhost:1313/css/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" results="0" class="search-form-input" placeholder="Search">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="q" value="site:http://localhost:1313/">
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="http://localhost:1313/">Home</a></td>
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <td><a class="main-nav-link" href="http://localhost:1313/tags/">Tags</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://localhost:1313/categories/">Categories</a></td>
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" results="0" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="q" value="site:http://localhost:1313/">
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+
+<div id="container">
+   <div class="outer">
+    <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="http://localhost:1313/css/images/avatar.png">
+      <h2 id="name">Michael Holt</h2>
+      <h3 id="title">I am an IT Administrator, Network Admin, Server Admin, Programmer, and Jack-Of-All-Trades serving the lord and the church with my talents.</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Valencia, CA</span>
+      
+          <a id="follow" href="https://github.com/digitalcraftsman">
+              Follow
+          </a>
+      
+    </div>
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <td><a href="//github.com/MichaelHoltTech" target="_blank" title="Github"><i class="fa fa-github"></i></a></td>
+          <td><a href="//twitter.com/mholtrlc" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+          <td><a href="" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+    <div class="contact-info profile-block">
+      <p style="text-align: center; font-size: 85%; font-style: italic;">The opinions and posts on this site are my own and are not necessarily shared by my employer.</p>
+    </div>
+  </div>
+</aside>
+
+    <section id="main">
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+
+            <header class="article-header">
+    <a href="http://localhost:1313/blog/1/01/01/raspberry-pi-camera-matrix">
+    <h1 class="article-title" itemprop="name">
+        Raspberry Pi Camera Matrix
+    </h1>
+    </a>
+    <div class="article-meta">
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+            &middot;
+            709
+            words
+            &middot;
+            4
+            minute read
+        </div>
+        <div class="article-category">
+            
+            <i class="fa fa-folder"></i>
+            <a class="article-category-link" href="http://localhost:1313/categories/unifi%20video">Unifi Video</a>
+            
+            <i class="fa fa-folder"></i>
+            <a class="article-category-link" href="http://localhost:1313/categories/ubiquiti">Ubiquiti</a>
+            
+            <i class="fa fa-folder"></i>
+            <a class="article-category-link" href="http://localhost:1313/categories/raspberry%20pi">Raspberry Pi</a>
+            
+        </div>
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                
+
+<p>##I have posted version 2 of this script <a href="http://www.mholt.tech/blog/2015/08/29/pi-cam-matrix-v2/">HERE</a>
+Over the last few months we&rsquo;ve been upgrading our Security Cameras, replacing a 10 year old vitek system with the Ubiquiti Unifi Video system.  We just finished installing the last of these Cameras and that included the need to find a new solution for our Children&rsquo;s Cameras to be displayed onto two TV&rsquo;s.  I found a Forum Post on the Ubiquiti Community that documented one person&rsquo;s script to display a <a href="http://community.ubnt.com/t5/UniFi-Video/Tutorial-Raspberry-Pi-4-Cam-Matrix-Viewer-Appliance/m-p/1253309#U1253309">2x2 Camera Matrix on a Raspberry Pi</a></p>
+
+<p>So I went ahead and order 2x Raspberry Pi&rsquo;s to power both of these displays and thought &ldquo;Perfect, someone else has done the leg work all I have to do is plug in the RTSP URL&rsquo;s and presto&rdquo;.  Unfortunatly, I ran into some issues with screen causing the video to jump a few seconds instead of playing smoothly.  I also couldn&rsquo;t get the code working as an init.d so I took a different approach using rc.local.</p>
+
+<p>For those that are interested in how to make this happen here&rsquo;s the instructions and code:</p>
+
+<p><strong>What you&rsquo;ll need:</strong></p>
+
+<ul>
+<li>Raspberry Pi2 (I got the Canakit Raspberry Pi 2 - Complete Starter Kit off of Amazon, comes with everything you need for this project)</li>
+<li>Unifi NVR Software running the most recent stable release</li>
+<li>HDTV or Computer Monitor capable of 1080p</li>
+<li>MicroSD to SD Card Adapter (Optional, only needed if you have to re-install raspbian)</li>
+<li>Keyboard for initial setup</li>
+</ul>
+
+<h3 id="instructions:d0904f9017f523d8bddb9dd66c65f39e">Instructions</h3>
+
+<ol>
+<li><p><strong>Put together and connect you PI2</strong></p>
+
+<p>Refer to the quick-start guide that is in the Box in order to get started with your Raspberry Pi and install Raspbian using the pre-loaded NOOBS installer on the SD Card</p></li>
+
+<li><p><strong>Configure Raspbian</strong></p>
+
+<p>Once you arrive at the Raspi-Config screen you should change the default password (Option 2) and set a hostname (Option 8 - A2).</p>
+
+<p>After this is done click finish and you will be dropped to the command line. Overclocking is also possible, but not required or recommended for what we are doing.</p>
+
+<p>For more information on raspi-config, see <a href="https://www.raspberrypi.org/documentation/configuration/raspi-config.md">https://www.raspberrypi.org/documentation/configuration/raspi-config.md</a></p></li>
+
+<li><p><strong>Get the code</strong></p>
+
+<p>You can get the code from GitHub by entering:</p>
+
+<p><code>git clone https://gist.github.com/dde9de96b6a4d72b7f58.git raspicams</code></p></li>
+
+<li><p><strong>Edit the files for your configuration</strong></p>
+
+<ul>
+<li><p>cd into raspicams by entering:</p>
+
+<p><code>cd ~/raspicams</code></p></li>
+
+<li><p>edit cams.sh by typing:</p>
+
+<p><code>nano cams.sh</code></p></li>
+
+<li><p>replace <rtsp_url_using_ip> with the RTSP url&rsquo;s for your cameras (I recommend using the Low Quality to save bandwidth and using an IP Address instead of FQDN to ensure no issues arrise.)  This url can be found in the NVR under RTSP Service when editing a camera</p></li>
+
+<li><p>exit nano by hitting ctrl + x then entering y to save and enter to keep the filename</p></li>
+
+<li><p>edit network-interfaces and set static IP address configuration for eth0 (Optional but Highly Recommended)</p></li>
+</ul></li>
+
+<li><p><strong>Copy the files into place</strong></p>
+
+<ul>
+<li>While still inside of ~/raspicams run this in order to copy all of these files into place:</li>
+</ul>
+
+<p><code>sudo chown root:root boot-config.txt network-interfaces rc.local cmdline.txt &amp; sudo chmod +x * &amp; sudo cp boot-config.txt /boot/config.txt &amp; sudo cp cmdline.txt /boot/cmdline.txt &amp; sudo cp rc.local /etc/rc.local &amp; sudo cp cams.sh ~/cams.sh</code></p>
+
+<ul>
+<li>If you have also configured a static IP in network-interfaces run this command to copy that file into place:</li>
+</ul>
+
+<p><code>sudo cp network-interfaces /etc/network/interfaces</code></p></li>
+
+<li><p><strong>Reboot the Pi</strong></p>
+
+<p>At this point all of your configuration is done.  All that&rsquo;s left to do is reboot the Pi and let the cameras load up.  Enter this command to tell the Pi to reboot:</p>
+
+<p><code>sudo reboot</code></p></li>
+</ol>
+
+<h3 id="troubleshooting:d0904f9017f523d8bddb9dd66c65f39e">Troubleshooting</h3>
+
+<ul>
+<li><strong>Display Issues:</strong></li>
+</ul>
+
+<p>If you&rsquo;re having strange display issues, such as banding, flickering, or the display just shuts off, it&rsquo;s somewhat expected for the Raspberry Pi.  To troubleshoot, you&rsquo;re going to have to make some changes to the /boot/config.txt file in order to force certain modes and resolutions.   The included config.txt works for my setup but your milage may vary depending on your TV/Monitor.</p>
+
+<ul>
+<li><strong>Starting with a Fresh Raspbian Install:</strong></li>
+</ul>
+
+<p>This is where you are going to need that option MicroSD to SD Card adapter.  I&rsquo;m not going to cover how to do that because the instructions are easily found on the internet.  Easiest ones to follow are at <a href="https://www.raspberrypi.org/documentation/installation/noobs.md">https://www.raspberrypi.org/documentation/installation/noobs.md</a></p>
+
+<ul>
+<li><strong>Changing RTSP URL&rsquo;s:</strong></li>
+</ul>
+
+<p>This easiest way to update your RTSP URL&rsquo;s is to edit the files that were copied from the git folder onto your pi.  This can be done by running:</p>
+
+<p><code>nano ~/cams.sh</code></p>
+
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://localhost:1313/blog/1/01/01/raspberry-pi-camera-matrix" data-id="d0904f9017f523d8bddb9dd66c65f39e" class="article-share-link">
+        Share
+    </a>
+    
+    <a href="http://localhost:1313/blog/1/01/01/raspberry-pi-camera-matrix/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+</footer>
+
+        </div>
+
+        
+<nav id="article-nav">
+    
+
+    
+    <a href="http://localhost:1313/blog/1/01/01/our-path-to-mac-management" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Newer
+      </strong>
+      <div class="article-nav-title">Our path to Mac Management</div>
+    </a>
+    
+</nav>
+
+
+    </article>
+    <section id="comments">
+        <div id="disqus_thread">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'mholttech';
+    var disqus_identifier = 'http:\/\/localhost:1313\/blog\/1\/01\/01\/raspberry-pi-camera-matrix';
+    var disqus_title = 'Raspberry Pi Camera Matrix';
+    var disqus_url = 'http:\/\/localhost:1313\/blog\/1\/01\/01\/raspberry-pi-camera-matrix';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </section>
+
+</section>
+
+    <aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://localhost:1313/blog/1/01/01/raspberry-pi-camera-matrix" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    <p class="item-category">
+                        <a class="article-category-link" href="http://localhost:1313/categories/puppet">
+                        Puppet
+                        </a>
+                    </p>
+                    
+                    <p class="item-title"><a href="http://localhost:1313/blog/2015/12/04/getting-started-with-puppet" class="title">Getting Started with Puppet</a></p>
+                    <p class="item-date">
+                        <time datetime="2015-12-04 17:04:01 -0800 PST" itemprop="datePublished">2015-12-04</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://localhost:1313/blog/1/01/01/raspberry-pi-camera-matrix" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    <p class="item-category">
+                        <a class="article-category-link" href="http://localhost:1313/categories/unifi%20video">
+                        Unifi Video
+                        </a>
+                    </p>
+                    
+                    <p class="item-title"><a href="http://localhost:1313/blog/2015/08/29/pi-cam-matrix-v2" class="title">Pi Cam Matrix v2</a></p>
+                    <p class="item-date">
+                        <time datetime="2015-08-29 09:50:39 -0800 -0800" itemprop="datePublished">2015-08-29</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://localhost:1313/blog/1/01/01/raspberry-pi-camera-matrix" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+    
+
+<div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                <a class="category-list-link" href="http://localhost:1313/categories/mac-management">
+                    mac-management
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                <a class="category-list-link" href="http://localhost:1313/categories/munki">
+                    munki
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                <a class="category-list-link" href="http://localhost:1313/categories/puppet">
+                    puppet
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                <a class="category-list-link" href="http://localhost:1313/categories/raspberry-pi">
+                    raspberry-pi
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                <a class="category-list-link" href="http://localhost:1313/categories/simian">
+                    simian
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                <a class="category-list-link" href="http://localhost:1313/categories/ubiquiti">
+                    ubiquiti
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                <a class="category-list-link" href="http://localhost:1313/categories/unifi-video">
+                    unifi-video
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+    
+
+    
+
+
+</aside>
+
+</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015<br>
+      Powered by <a href="//gohugo.io">Hugo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>.
+    </div>
+  </div>
+</footer>
+
+
+
+<script data-no-instant>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>

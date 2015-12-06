@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>Our path to Mac Management &middot; Michael Holt</title>
+    <meta name="generator" content="Hugo 0.14" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Michael Holt">
+    
+    
+    <link rel="icon" href="http://localhost:1313/favicon.ico">
+    <link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png" />
+    <link rel="stylesheet" href="http://localhost:1313/css/style.css">
+    <link rel="stylesheet" href="http://localhost:1313/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://localhost:1313/css/monokai.css">
+    <link rel="stylesheet" href="http://localhost:1313/fancybox/jquery.fancybox.css">
+    <meta property="og:title" content="Our path to Mac Management" />
+<meta property="og:description" content="###Where we Started
+
+
+“In the beginning God created…” the Mac… “and it was good”
+
+
+Ok maybe I went a little far in that one.  I came on staff at Real Life Church in 2012 and at that time we were mostly a PC shop with the exception being Pastors exclusively having a Mac (With Local Admin Access and no admin account for IT).  Over the next 2 years we realized that we got significantly more support requests on our PCs than for our Macs. We were running on an aging SBS 2008 server that was maxed out on licensing and we were continuing to grow.  After numerous conversations with my Director and leadership the decision was clear that we needed to make the transition to a 100% Mac shop in our church.
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/blog/1/01/01/our-path-to-mac-management" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+<meta itemprop="name" content="Our path to Mac Management">
+<meta itemprop="description" content="###Where we Started
+
+
+“In the beginning God created…” the Mac… “and it was good”
+
+
+Ok maybe I went a little far in that one.  I came on staff at Real Life Church in 2012 and at that time we were mostly a PC shop with the exception being Pastors exclusively having a Mac (With Local Admin Access and no admin account for IT).  Over the next 2 years we realized that we got significantly more support requests on our PCs than for our Macs. We were running on an aging SBS 2008 server that was maxed out on licensing and we were continuing to grow.  After numerous conversations with my Director and leadership the decision was clear that we needed to make the transition to a 100% Mac shop in our church.
+">
+
+
+
+<meta itemprop="wordCount" content="1027">
+
+
+
+<meta itemprop="keywords" content="mac-management,puppet,raspberry-pi,ubiquiti,unifi-video,puppetserver," />
+
+    
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="Our path to Mac Management"/>
+<meta name="twitter:description" content="###Where we Started
+
+
+“In the beginning God created…” the Mac… “and it was good”
+
+
+Ok maybe I went a little far in that one.  I came on staff at Real Life Church in 2012 and at that time we were mostly a PC shop with the exception being Pastors exclusively having a Mac (With Local Admin Access and no admin account for IT).  Over the next 2 years we realized that we got significantly more support requests on our PCs than for our Macs. We were running on an aging SBS 2008 server that was maxed out on licensing and we were continuing to grow.  After numerous conversations with my Director and leadership the decision was clear that we needed to make the transition to a 100% Mac shop in our church.
+"/>
+
+
+
+</head>
+<body>
+<div class="container">
+
+<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="http://localhost:1313/" id="logo"><i class="logo" style="background-image: url('http://localhost:1313/css/images/logo.png')"></i><span class="site-title">Michael Holt</span></a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="http://localhost:1313/">Home</a>
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <a class="main-nav-link" href="http://localhost:1313/tags/">Tags</a>
+          
+          
+          
+          <a class="main-nav-link" href="http://localhost:1313/categories/">Categories</a>
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="http://localhost:1313/css/images/avatar.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" results="0" class="search-form-input" placeholder="Search">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="q" value="site:http://localhost:1313/">
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="http://localhost:1313/">Home</a></td>
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <td><a class="main-nav-link" href="http://localhost:1313/tags/">Tags</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="http://localhost:1313/categories/">Categories</a></td>
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" results="0" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="q" value="site:http://localhost:1313/">
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+
+<div id="container">
+   <div class="outer">
+    <aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      <img id="avatar" src="http://localhost:1313/css/images/avatar.png">
+      <h2 id="name">Michael Holt</h2>
+      <h3 id="title">I am an IT Administrator, Network Admin, Server Admin, Programmer, and Jack-Of-All-Trades serving the lord and the church with my talents.</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Valencia, CA</span>
+      
+          <a id="follow" href="https://github.com/digitalcraftsman">
+              Follow
+          </a>
+      
+    </div>
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <td><a href="//github.com/MichaelHoltTech" target="_blank" title="Github"><i class="fa fa-github"></i></a></td>
+          <td><a href="//twitter.com/mholtrlc" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+          <td><a href="" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+    <div class="contact-info profile-block">
+      <p style="text-align: center; font-size: 85%; font-style: italic;">The opinions and posts on this site are my own and are not necessarily shared by my employer.</p>
+    </div>
+  </div>
+</aside>
+
+    <section id="main">
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+        <div class="article-inner">
+            
+
+            <header class="article-header">
+    <a href="http://localhost:1313/blog/1/01/01/our-path-to-mac-management">
+    <h1 class="article-title" itemprop="name">
+        Our path to Mac Management
+    </h1>
+    </a>
+    <div class="article-meta">
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+            &middot;
+            1027
+            words
+            &middot;
+            5
+            minute read
+        </div>
+        <div class="article-category">
+            
+            <i class="fa fa-folder"></i>
+            <a class="article-category-link" href="http://localhost:1313/categories/mac%20management">Mac Management</a>
+            
+        </div>
+    </div>
+</header>
+
+            <div class="article-entry" itemprop="articleBody">
+                <p>###Where we Started</p>
+
+<blockquote>
+<p>“In the beginning God created…” the Mac… “and it was good”</p>
+</blockquote>
+
+<p>Ok maybe I went a little far in that one.  I came on staff at Real Life Church in 2012 and at that time we were mostly a PC shop with the exception being Pastors exclusively having a Mac (With Local Admin Access and no admin account for IT).  Over the next 2 years we realized that we got significantly more support requests on our PCs than for our Macs. We were running on an aging SBS 2008 server that was maxed out on licensing and we were continuing to grow.  After numerous conversations with my Director and leadership the decision was clear that we needed to make the transition to a 100% Mac shop in our church.</p>
+
+<p>This decision was based on the need to purchase new hardware and spend hundreds of man hours (as the solo IT Admin) in building out a new server infrastructure to manage the windows Machines with no guarantee that it would cut down on the ongoing support needs.  The direction was clear at the beginning of 2014 that we would be transitioning to the Macs as soon as we had the capital to spend on them.</p>
+
+<p>Knowing this, I began to research and address ways to manage software, patches, and support the new influx of Macs.</p>
+
+<p>###Introducing the Munki</p>
+
+<p><img src="https://lh3.googleusercontent.com/-SZsDtJV44Ic/T8ytQjvo24I/AAAAAAAAAlc/A4b9DjdBWGk/s640/blogger-image-1072467874.jpg" alt="alt text" title="Oh No, Monkeys on a Mac! - Image courtesy of http://nikiwallacedesign.blogspot.com/2012/06/think-first-design-later.html" /></p>
+
+<p>Ok so I’m not actually talking about a real Monkey here.  Munki is a set of tools that can be used to manage software installs on OS X Client Machines.  It was developed by Gregg Neagle (@gregneagle) at Walt Disney Animation Studios and was open sourced for anyone to use and contribute to.  I had heard about Munki a couple of times in discussions with Churches and other people about how to manage a Mac and finally decided to start looking into it.  In addition to do managed and optional installs as well as updates of 3rd party software, it is also capable of installing Apple Software Updates.</p>
+
+<p>###Our Requirements for Staff Macs</p>
+
+<p>One of the first things we decided on was some of the requirements and restrictions that we wanted in place on the Mac.  Every organization is different but this is where we settled.</p>
+
+<ol>
+<li><p>No end user will be an administrator on their Machine</p></li>
+
+<li><p>Only approved software can be installed and can be found inside Munki</p></li>
+
+<li><p>No App Store apps allowed
+One of the continuous debates is Admin vs No Admin regardless of platform (Mac vs PC).  We decided on the no admin approach because we did not want our staff being able to install unapproved software or changing system settings that could negatively affect their Machine.</p></li>
+</ol>
+
+<p>###Challenges</p>
+
+<p>I spent about 10 months developing our Munki infrastructure and learning how it worked.  Part of the reason for taking this long is when first evaluating it at the beginning of the year there was already progress being made on version 2 that turned Munki into a replica of the Apple App Store in terms of layout and usability.</p>
+
+<p>The primary opposition we faced was a number of employees responded with: “I’ve always used a PC and have never touched a Mac, how am I supposed to get my job done?”  We encouraged our users to keep an open mind and we spent time with them after migrating their data showing them the basics of how to use a Mac and spending 15-20 minutes showing them the basics on how to open documents and applications.  Within a few months I was hearing from everyone that they “loved” their Macs and are glad to have them.</p>
+
+<p>###Issues with Non-Admins and Munki</p>
+
+<p>After a few months in we started finding a few issues with our configuration and stance of no Local Admin access.  This included:</p>
+
+<ol>
+<li><p>Users could not change their energy saver preferences</p></li>
+
+<li><p>Users could not install home printers</p></li>
+
+<li><p>Printers would “pause” when running out of paper or toner, and paper jams. Admin credentials were required to resume printing</p></li>
+
+<li><p>Management of software updates became cumbersome and users were requesting software that would have been available in the Mac App Store</p></li>
+</ol>
+
+<p>###Our Next Steps</p>
+
+<p>We have been using Munki for a year now and when re-evaluating our setup and options we discovered that we were spending significantly more than we had anticipated by running our system on Amazon EC2.  We also wanted to address some underlying issues with configuration management, printers, and opening up the App Store.  This led us to make some new changes which I will highlight here and detail further in future blog posts.</p>
+
+<p>We decided to go with the following systems to comprise our Mac Management Solution:</p>
+
+<ol>
+<li><p><a href="https://github.com/google/simian"><strong>Simian</strong></a>, a backend solution to power the Munki client, hosted on Google App Engine and developed by Google MacOps, along with customizations to Munki to create a secure connection between the client and server.</p></li>
+
+<li><p><a href="https://puppetlabs.com/"><strong>Puppet</strong></a>, a configuration management system that allows you to define the state of your Machines.</p></li>
+
+<li><p><a href="https://github.com/Munkireport/Munkireport-php"><strong>Munkireport-php</strong></a>, a powerful system reporting utility that provides detailed system information on your Macs</p></li>
+
+<li><p><a href="https://github.com/grahamgilbert/Crypt"><strong>Crypt</strong></a>, a Filevault Key Escrow solution built by Graham Gilbert for recording filevault recovery keys</p></li>
+
+<li><p><a href="https://github.com/grahamgilbert/Macnamer"><strong>Macnamer</strong></a>, a web app and Mac script that runs on your Mac to force your Machine to follow a naming convention with an automatically generated number suffix. Another solution built by Graham Gilbert</p></li>
+
+<li><p><a href="https://github.com/salopensource/sal"><strong>Sal</strong></a>, a Multi-Tennant reporting dashboard similar to Munkireport that provides another way of viewing system information.</p></li>
+
+<li><p><a href="https://github.com/autopkg/autopkg"><strong>Autopkg</strong></a>, automates the download and manifest creation of software for import into simian.  This is not fully automated but allows me to simply copy paste into Simian to provide updates.</p></li>
+
+<li><p><a href="https://github.com/lindegroup/autopkgr"><strong>Autopkgr</strong></a>, ties into Autopkg and checks for software updates every night and sends an email alert when software updates are installed</p></li>
+
+<li><p><a href="https://www.screenconnect.com/"><strong>Screenconnect</strong></a>, an Unattended Remote Support software for Mac/PC/Linux.  We use this to be able to remotely support our Users.</p></li>
+
+<li><p><strong>Not Yet Implemented</strong> - <a href="https://github.com/grahamgilbert/imagr"><strong>Imagr</strong></a>, an open source replacement to DeployStudio for workstation imaging and thin-provisioning.</p></li>
+</ol>
+
+<p>Everything except Simian runs inside a single server on Digital Ocean inside of Docker Containers.  I plan on publishing additional information on my setup and instructions on how to create this setup in the near future.</p>
+
+            </div>
+            <footer class="article-footer">
+    <a data-url="http://localhost:1313/blog/1/01/01/our-path-to-mac-management" data-id="79346f77ddef6538ddb2b438f8d959f4" class="article-share-link">
+        Share
+    </a>
+    
+    <a href="http://localhost:1313/blog/1/01/01/our-path-to-mac-management/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+</footer>
+
+        </div>
+
+        
+<nav id="article-nav">
+    
+
+    
+    <a href="http://localhost:1313/blog/2015/08/10/welcome-to-my-blog" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Newer
+      </strong>
+      <div class="article-nav-title">Welcome to my Blog!</div>
+    </a>
+    
+</nav>
+
+
+    </article>
+    <section id="comments">
+        <div id="disqus_thread">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'mholttech';
+    var disqus_identifier = 'http:\/\/localhost:1313\/blog\/1\/01\/01\/our-path-to-mac-management';
+    var disqus_title = 'Our path to Mac Management';
+    var disqus_url = 'http:\/\/localhost:1313\/blog\/1\/01\/01\/our-path-to-mac-management';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </section>
+
+</section>
+
+    <aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://localhost:1313/blog/1/01/01/our-path-to-mac-management" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    <p class="item-category">
+                        <a class="article-category-link" href="http://localhost:1313/categories/puppet">
+                        Puppet
+                        </a>
+                    </p>
+                    
+                    <p class="item-title"><a href="http://localhost:1313/blog/2015/12/04/getting-started-with-puppet" class="title">Getting Started with Puppet</a></p>
+                    <p class="item-date">
+                        <time datetime="2015-12-04 17:04:01 -0800 PST" itemprop="datePublished">2015-12-04</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://localhost:1313/blog/1/01/01/our-path-to-mac-management" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    <p class="item-category">
+                        <a class="article-category-link" href="http://localhost:1313/categories/unifi%20video">
+                        Unifi Video
+                        </a>
+                    </p>
+                    
+                    <p class="item-title"><a href="http://localhost:1313/blog/2015/08/29/pi-cam-matrix-v2" class="title">Pi Cam Matrix v2</a></p>
+                    <p class="item-date">
+                        <time datetime="2015-08-29 09:50:39 -0800 -0800" itemprop="datePublished">2015-08-29</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://localhost:1313/blog/1/01/01/our-path-to-mac-management" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    <p class="item-category">
+                        <a class="article-category-link" href="http://localhost:1313/categories/unifi%20video">
+                        Unifi Video
+                        </a>
+                    </p>
+                    
+                    <p class="item-title"><a href="http://localhost:1313/blog/2015/08/21/raspberry-pi-camera-matrix" class="title">Raspberry Pi Camera Matrix</a></p>
+                    <p class="item-date">
+                        <time datetime="2015-08-21 14:46:39 -0800 -0800" itemprop="datePublished">2015-08-21</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="http://localhost:1313/blog/1/01/01/our-path-to-mac-management" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+    
+
+<div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                <a class="category-list-link" href="http://localhost:1313/categories/mac-management">
+                    mac-management
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                <a class="category-list-link" href="http://localhost:1313/categories/puppet">
+                    puppet
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                <a class="category-list-link" href="http://localhost:1313/categories/raspberry-pi">
+                    raspberry-pi
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                <a class="category-list-link" href="http://localhost:1313/categories/ubiquiti">
+                    ubiquiti
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                <a class="category-list-link" href="http://localhost:1313/categories/unifi-video">
+                    unifi-video
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+    
+
+    
+
+
+</aside>
+
+</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015<br>
+      Powered by <a href="//gohugo.io">Hugo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>.
+    </div>
+  </div>
+</footer>
+
+
+
+<script data-no-instant>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
